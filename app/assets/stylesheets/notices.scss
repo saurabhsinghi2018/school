@@ -1,0 +1,15 @@
+// Place all the styles related to the notices controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+article section h5{
+  font-weight: bold;
+  color: #FF5733;
+}
+
+.admission{
+  padding: 15px;
+  border: 2px solid;
+  h2{
+    color:  #581845;
+  }
+}

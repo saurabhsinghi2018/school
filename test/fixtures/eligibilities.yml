@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section: MyString
+  dateofbirthtill: MyString
+  age: MyString
+  dateason: MyString
+
+two:
+  section: MyString
+  dateofbirthtill: MyString
+  age: MyString
+  dateason: MyString

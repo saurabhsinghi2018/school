@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section: MyString
+  candidatename: MyString
+  education: MyString
+  passportsizephoto: MyString
+  fathername: MyString
+  mothername: MyString
+  contactaddress: MyString
+  fathercontactnumber: MyString
+  mothercontactnumber: MyString
+  previousgrademarksheet: MyString
+
+two:
+  section: MyString
+  candidatename: MyString
+  education: MyString
+  passportsizephoto: MyString
+  fathername: MyString
+  mothername: MyString
+  contactaddress: MyString
+  fathercontactnumber: MyString
+  mothercontactnumber: MyString
+  previousgrademarksheet: MyString

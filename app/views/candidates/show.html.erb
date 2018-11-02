@@ -1,0 +1,62 @@
+<%= render 'welcome/navigation' %>
+
+<div class="container">
+
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Section:</strong>
+    <%= @candidate.section %>
+  </p>
+
+  <p>
+    <strong>Candidatename:</strong>
+    <%= @candidate.candidatename %>
+  </p>
+
+  <p>
+    <strong>Education:</strong>
+    <%= @candidate.education %>
+  </p>
+
+  <p>
+    <strong>Passportsizephoto:</strong>
+    <%= image_tag @candidate.passportsizephoto.thumb.url %>
+  </p>
+
+  <p>
+    <strong>Fathername:</strong>
+    <%= @candidate.fathername %>
+  </p>
+
+  <p>
+    <strong>Mothername:</strong>
+    <%= @candidate.mothername %>
+  </p>
+
+  <p>
+    <strong>Contactaddress:</strong>
+    <%= @candidate.contactaddress %>
+  </p>
+
+  <p>
+    <strong>Fathercontactnumber:</strong>
+    <%= @candidate.fathercontactnumber %>
+  </p>
+
+  <p>
+    <strong>Mothercontactnumber:</strong>
+    <%= @candidate.mothercontactnumber %>
+  </p>
+
+  <p>
+    <strong>Previousgrademarksheet:</strong>
+    <%= @candidate.previousgrademarksheet %>
+  </p>
+
+  <%= link_to 'Edit', edit_user_candidate_path(current_user,@candidate) %> |
+  <%= link_to 'Back', user_candidates_path(current_user) %>
+
+</div>
+
+<%= render 'welcome/footer' %>

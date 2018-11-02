@@ -1,0 +1,11 @@
+<%= render 'welcome/navigation'%>
+
+<div class="container">
+  <h1>New Eligibility</h1>
+
+  <%= render 'form', eligibility: @eligibility %>
+
+  <%= link_to 'Back', eligibilities_path %>
+</div>
+
+<%= render 'welcome/footer' %>

@@ -1,0 +1,31 @@
+<%= render 'welcome/navigation' %>
+
+<div class="container">
+  <h1>Admission Notices</h1>
+
+  <div class="admission">
+    <h2>The admission process will be from 30 oct - 30 november 2018</h2>
+  </div>
+
+  <% @notices.each do |notice| %>
+  <article>
+    <section>
+      <h5><%= notice.shortlisting %></h5>
+      <p><%= notice.interview %></p>
+
+      <% if admin? %>
+      <td><%= link_to 'Show', notice %></td>
+      <td><%= link_to 'Edit', edit_notice_path(notice) %></td>
+      <td><%= link_to 'Destroy', notice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </section>
+  </article>
+  <% end %>
+
+  <% if admin? %>
+  <%= link_to 'New Notice', new_notice_path %>
+  <% end %>
+
+</div>
+
+<%= render 'welcome/footer' %>

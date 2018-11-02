@@ -1,0 +1,30 @@
+<div class="container ">
+
+  <div class="charge">
+    <%= form_tag payment_path do %>
+      <div class="payment">
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <label class="amount">
+          <h1>Amount: $5.00</h1>
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-description="Registration charge"
+                  data-amount="500"
+                  data-locale="auto"></script>
+        </label>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div>
+    <h3>Instructions</h3>
+    <p>After the payment is completed an id will be generated.</p>
+    <p>In the email section type email with which u have registered </p>
+  </div>
+
+</div>

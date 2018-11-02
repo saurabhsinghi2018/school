@@ -1,0 +1,60 @@
+<div class="container">
+  <%= form_for ([current_user,@candidate]) do |f| %>
+
+    <div class="field">
+      <%= f.label :section %>
+      <%= f.select(:section,Candidate::CLASS_LIST) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :candidate_name %>
+      <%= f.text_field :candidatename , class: 'form-control' , required: 'required' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :education %>
+      <%= f.text_field :education , class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :passport_size_photo %>
+      <%= f.file_field :passportsizephoto , class: 'form-control' , required: 'required' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :father_name %>
+      <%= f.text_field :fathername , class: 'form-control' , required: 'required' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :mother_name %>
+      <%= f.text_field :mothername , class: 'form-control' , required: 'required'  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :contact_address %>
+      <%= f.text_field :contactaddress , class: 'form-control' , required: 'required'  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :father_contact_number %>
+      <%= f.text_field :fathercontactnumber , class: 'form-control' , required: 'required' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :mother_contact_number %>
+      <%= f.text_field :mothercontactnumber , class: 'form-control' , required: 'required'  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :previous_grade_marksheet %>
+      <%= f.file_field :previousgrademarksheet , class: 'form-control'  %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+  <% end %>
+
+</div>

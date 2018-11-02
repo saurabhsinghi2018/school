@@ -1,0 +1,29 @@
+<%= render 'welcome/navigation'%>
+
+<div class="container update">
+  <p>
+    <strong>Section:</strong>
+    <%= @eligibility.section %>
+  </p>
+
+  <p>
+    <strong>Dateofbirthtill:</strong>
+    <%= @eligibility.dateofbirthtill %>
+  </p>
+
+  <p>
+    <strong>Age:</strong>
+    <%= @eligibility.age %>
+  </p>
+
+  <p>
+    <strong>Dateason:</strong>
+    <%= @eligibility.dateason %>
+  </p>
+
+  <%= link_to 'Edit', edit_eligibility_path(@eligibility) %> |
+  <%= link_to 'Back', eligibilities_path %>
+
+</div>
+
+<%= render 'welcome/footer' %>

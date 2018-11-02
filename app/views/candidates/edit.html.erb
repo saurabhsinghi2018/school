@@ -1,0 +1,12 @@
+<%= render 'welcome/navigation' %>
+
+<div class="container">
+  <h1>Editing Candidate</h1>
+
+  <%= render 'form', candidate: [@candidate] %>
+
+  <%= link_to 'Show', [current_user, @candidate] %> |
+  <%= link_to 'Back', user_candidates_path(current_user)%>
+</div>
+
+<%= render 'welcome/footer' %>

@@ -1,0 +1,11 @@
+// Place all the styles related to the eligibilities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.eligibilities {
+  table,th,td {
+    border: 2px solid;
+    @media (min-width:768px){
+      padding: 20px 50px;
+    }
+  }
+}

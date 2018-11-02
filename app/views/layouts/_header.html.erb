@@ -1,0 +1,20 @@
+<header>
+  <div class="container d-flex justify-content-between">
+    <img src="http://i63.tinypic.com/20zptmh.jpg" alt="logo">
+    <ul class="nav">
+      <% if logged_in? %>
+          <li class="dropdown">
+            <button class="dropbtn">Profile</button>
+            <div class="dropdown-content">
+              <%= @current_user.name %>
+              <%= link_to "Edit profile",edit_user_path(current_user) %>
+              <%= link_to "Log out", logout_path, method: :delete %>
+            </div>
+          </li>
+      <% else %>
+        <li><%= link_to "Log in", login_path %></li>
+        <li><%= link_to "Sign up", signup_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>

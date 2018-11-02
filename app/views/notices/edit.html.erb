@@ -1,0 +1,13 @@
+<%= render 'welcome/navigation'%>
+
+<div class="container">
+  <h1>Editing Notice</h1>
+
+  <%= render 'form', notice: @notice %>
+
+  <%= link_to 'Show', @notice %> |
+  <%= link_to 'Back', notices_path %>
+
+</div>
+
+<%= render 'welcome/footer' %>
