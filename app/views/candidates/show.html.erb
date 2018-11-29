@@ -1,12 +1,10 @@
-<%= render 'welcome/navigation' %>
-
 <div class="container">
 
   <p id="notice"><%= notice %></p>
 
   <p>
     <strong>Section:</strong>
-    <%= @candidate.section %>
+    <%= @candidate.section.section %>
   </p>
 
   <p>
@@ -54,8 +52,8 @@
     <%= @candidate.previousgrademarksheet %>
   </p>
 
-  <%= link_to 'Edit', edit_user_candidate_path(current_user,@candidate) %> |
-  <%= link_to 'Back', user_candidates_path(current_user) %>
+  <%= link_to 'Edit', edit_section_candidate_path(@candidate.section, @candidate) %> |
+  <%= link_to 'Back', @section %>
 
 </div>
 

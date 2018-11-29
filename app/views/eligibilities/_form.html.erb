@@ -1,29 +1,41 @@
 <div class="container">
   <%= form_for(eligibility) do |f| %>
 
-    <div class="field">
-      <%= f.label :section %>
-      <%= f.select(:section,Eligibility::ELIGIBILITY) %>
-    </div>
+  <% if @eligibility.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@eligibility.errors.count, "error") %> prohibited this candidate from being saved:</h2>
 
-    <div class="field">
-      <%= f.label :date_of_birth_till %>
-      <%= f.date_field :dateofbirthtill ,class:'form-control' %>
-    </div>
+    <ul>
+      <% @eligibility.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 
-    <div class="field">
-      <%= f.label :age %>
-      <%= f.text_field :age ,class:'form-control' %>
-    </div>
+  <div class="field">
+    <%= f.label :section %>
+    <%= f.select(:section,Eligibility::ELIGIBILITY) %>
+  </div>
 
-    <div class="field">
-      <%= f.label :date_as_on %>
-      <%= f.date_field :dateason ,class:'form-control' %>
-    </div>
+  <div class="field">
+    <%= f.label :date_of_birth_till %>
+    <%= f.date_field :dateofbirthtill ,class:'form-control' %>
+  </div>
 
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+  <div class="field">
+    <%= f.label :age %>
+    <%= f.text_field :age ,class:'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_as_on %>
+    <%= f.date_field :dateason ,class:'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
   <% end %>
 
 </div>

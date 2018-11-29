@@ -5,3 +5,34 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(
+  [
+    {
+      name:'bob',
+      email:'bob@mailinator.com',
+      password:'123456',
+      password_confirmation:'123456',
+      admin:true
+    },
+    {
+      name:'dops',
+      email:'dops@mailinator.com',
+      password:'123456',
+      password_confirmation:'123456',
+    }
+  ]
+)
+
+Section.create([
+  {
+    section:'kindergarden section',
+    user_id:'1'
+  },
+  {
+    section:'class 1',
+    user_id:'1'
+  },
+    section:"CLASS 5(BOY'S)",
+    user_id:'2'
+  ])

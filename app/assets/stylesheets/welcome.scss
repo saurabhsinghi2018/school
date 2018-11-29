@@ -1,38 +1,3 @@
-.navbar {
-  background-color: #283c5d;
-  margin-bottom: 20px ;
-  li{
-    font-size: 20px ;
-    @media (min-width:768px){
-      font-size: 25px;
-    }
-  }
-  img{
-    width:30px;
-    height:30px;
-  }
-  .nav-style a{
-    color: #FFF;
-    &:hover{
-      color: #FFF;
-      text-decoration: none;
-    }
-  }
-  .dropdown-toggle{
-    color: #FFF;
-  }
-  .drop a{
-    font-size: 20px;
-    display: block;
-    padding-left: 10px;
-    color: #000;
-      &:hover{
-        text-decoration: none;
-        color:#283c5d;
-      }
-  }
-}
-
 .carousel-item img {
   margin-bottom: 15px;
   width: 100%;
@@ -114,8 +79,9 @@ article{
 }
 
 footer {
-  margin-top: 80px;
-  background-color: #FFBB33 ;
+   margin-top: 130px;
+   width:100%;
+   background-color: #FFBB33 ;
   a {
     font-size: 20px;
     font-weight: bold;

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  add_flash_types :success, :warning, :danger, :info, :error
+  add_flash_types :success, :warning, :danger, :info, :error, :primary
 
   include SessionsHelper
 
@@ -29,5 +29,5 @@ class ApplicationController < ActionController::Base
     @user = User.find(session[:user_id])
     redirect_to(root_url) unless @user == current_user
   end
-  
+
 end

@@ -2,7 +2,8 @@ class SessionsController < ApplicationController
 
   def new
     if logged_in?
-       !current_user.nil?
+       redirect_to welcome_path
+       flash[:danger] = "You're already logged in"
     end
   end
 

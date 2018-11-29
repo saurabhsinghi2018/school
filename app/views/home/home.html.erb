@@ -1,1 +1,5 @@
-<img class="col-md-12" src="http://i67.tinypic.com/2iber1l.jpg" alt="school building">
+<% if logged_in? %>
+    <%= render 'welcome/tab' %>
+  <% else %>
+    <img class="col-md-12" src="http://i67.tinypic.com/2iber1l.jpg" alt="school building">
+<% end %>

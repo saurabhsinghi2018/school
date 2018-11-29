@@ -1,54 +1,49 @@
-<%= render 'welcome/navigation' %>
-
 <div class="table-responsive container candidates">
-  <table class="table ">
+    <h1>Listing candidates</h1>
 
-    <h1>Candidates</h1>
-
-    <thead>
+    <table class="table">
       <tr>
         <th>candidate id</th>
         <th>payment</th>
-        <th>Section</th>
         <th>Candidatename</th>
         <th>Education</th>
         <th>Passportsizephoto</th>
         <th>Fathername</th>
         <th>Mothername</th>
-        <th>Contactaddress</th>
         <th>Fathercontactnumber</th>
         <th>Mothercontactnumber</th>
+        <th>Contactaddress</th>
         <th>Previousgrademarksheet</th>
-        <th> Show </th>
-        <th> Edit </th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
-    </thead>
 
-      <tbody>
-        <% @candidates.each do |candidate| %>
-          <tr>
-            <td>Mt-<%= candidate.id %></td>
-            <td><%= link_to 'payment' , new_payment_path(candidate) %></td>
-            <td><%= candidate.section %></td>
-            <td><%= candidate.candidatename %></td>
-            <td><%= candidate.education %></td>
-            <td><%= candidate.passportsizephoto %></td>
-            <td><%= candidate.fathername %></td>
-            <td><%= candidate.mothername %></td>
-            <td><%= candidate.contactaddress %></td>
-            <td><%= candidate.fathercontactnumber %></td>
-            <td><%= candidate.mothercontactnumber %></td>
-            <td><%= candidate.previousgrademarksheet %></td>
-            <td><%= link_to 'Show', [@user,candidate] %></td>
-            <td><%= link_to 'Edit', edit_user_candidate_path(@user,candidate) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-  </table>
+    <% @section.candidates.each do |candidate| %>
+      <tr>
+        <td>Mt-<%= candidate.id %></td>
+        <td><%= link_to 'payment' , new_payment_path(candidate) %></td>
+        <td><%= candidate.candidatename %></td>
+        <td><%= candidate.education %></td>
+        <td><%= candidate.passportsizephoto %></td>
+        <td><%= candidate.fathername %></td>
+        <td><%= candidate.mothername %></td>
+        <td><%= candidate.fathercontactnumber %></td>
+        <td><%= candidate.mothercontactnumber %></td>
+        <td><%= candidate.contactaddress %></td>
+        <td><%= candidate.previousgrademarksheet %></td>
+        <td><%= link_to 'Show', [candidate.section, candidate] %></td>
+        <td><%= link_to 'Edit', edit_section_candidate_path(candidate.section, candidate) %></td>
+        <td><%= link_to 'Delete', [candidate.section, candidate], :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+    </table>
 
-  <%= link_to 'New Candidate', new_user_candidate_path(@user) %>
+  <%= link_to 'New Candidate', new_section_candidate_path(params[:section_id]) %>
   <h4>If payment already done ignore the payment link</h4>
 
 </div>
 
 <%= render 'welcome/footer' %>
+
+<br/>

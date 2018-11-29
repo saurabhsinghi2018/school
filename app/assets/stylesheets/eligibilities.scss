@@ -4,8 +4,10 @@
 .eligibilities {
   table,th,td {
     border: 2px solid;
+    font-size: 12px;
     @media (min-width:768px){
-      padding: 20px 50px;
+      font-size: 14px;
+      padding: 10px 30px;
     }
   }
 }

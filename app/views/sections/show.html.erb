@@ -1,0 +1,52 @@
+<div class="container section">
+  <p id="notice"><%= notice %></p>
+
+  <h2><%= @section.section %></h2>
+
+  <div class="table-responsive container candidates">
+    <table class="table">
+      <tr>
+        <th>candidate id</th>
+        <th>payment</th>
+        <th>Candidatename</th>
+        <th>Education</th>
+        <th>Passportsizephoto</th>
+        <th>Fathername</th>
+        <th>Mothername</th>
+        <th>Fathercontactnumber</th>
+        <th>Mothercontactnumber</th>
+        <th>Contactaddress</th>
+        <th>Previousgrademarksheet</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+
+      <% @section.candidates.each do |candidate| %>
+      <tr>
+        <td>Mt-<%= candidate.id %></td>
+        <td><%= link_to 'payment' , new_payment_path(candidate) %></td>
+        <td><%= candidate.candidatename %></td>
+        <td><%= candidate.education %></td>
+        <td><%= candidate.passportsizephoto %></td>
+        <td><%= candidate.fathername %></td>
+        <td><%= candidate.mothername %></td>
+        <td><%= candidate.fathercontactnumber %></td>
+        <td><%= candidate.mothercontactnumber %></td>
+        <td><%= candidate.contactaddress %></td>
+        <td><%= candidate.previousgrademarksheet %></td>
+        <td><%= link_to 'Show', [candidate.section, candidate] %></td>
+        <td><%= link_to 'Edit', edit_section_candidate_path(candidate.section, candidate) %></td>
+        <td><%= link_to 'Delete', [candidate.section, candidate], :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+      <% end %>
+    </table>
+
+    <%= link_to 'Add New Candidate', new_section_candidate_path(@section) %>
+  </div>
+
+  <%= link_to 'Edit', edit_section_path(@section) %> |
+  <%= link_to 'Back', sections_path %>
+</div>
+
+<%= render 'welcome/footer' %>

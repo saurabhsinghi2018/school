@@ -1,0 +1,25 @@
+<div class="container">
+  <%= form_for section do |form| %>
+
+  <% if section.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(section.errors.count, "error") %> prohibited this section from being saved:</h2>
+
+    <ul>
+      <% section.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :section %>
+    <%= form.text_field :section , class: 'form-control' , required: 'required' %>
+  </div>
+
+  <div class="actions mt-4 text-center">
+    <%= form.submit %>
+  </div>
+  <% end %>
+</div>

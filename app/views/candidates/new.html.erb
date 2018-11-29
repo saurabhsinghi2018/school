@@ -1,33 +1,30 @@
-<%= render 'welcome/navigation' %>
-
 <div class="container">
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Points to remember
-  </button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Important Instructions
+</button>
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>In the education section, its applicable after junior section</p>
-          <p>In the marksheet section, its applicable after junior section</p>
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3>For the education and marksheet part:</h3>
+        <p>Do not fill the portion if u are applying for kindergarden section.</p>
       </div>
     </div>
   </div>
-
+</div>
   <h1>New Candidate</h1>
 
-  <%= render 'form', candidate: @candidate %>
+  <%= render 'form' %>
 
-  <%= link_to 'Back', welcome_path %>
+  <%= link_to 'Back', @section %>
 
 </div>
 

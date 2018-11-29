@@ -1,10 +1,8 @@
-<%= render 'welcome/navigation' %>
-
 <div class="container">
   <h1>Admission Notices</h1>
 
   <div class="admission">
-    <h2>The admission process will be from 30 oct - 30 november 2018</h2>
+    <h2>The admission forms will be available from 25 oct - 20 november 2018</h2>
   </div>
 
   <% @notices.each do |notice| %>
@@ -21,6 +19,11 @@
     </section>
   </article>
   <% end %>
+
+  <div class="admission">
+    <h2>For full details of the admission schedule click below</h2>
+    <%= link_to 'Schedule',schedule_path %>
+  </div>
 
   <% if admin? %>
   <%= link_to 'New Notice', new_notice_path %>

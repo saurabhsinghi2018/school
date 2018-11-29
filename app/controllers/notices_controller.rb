@@ -34,7 +34,7 @@ class NoticesController < ApplicationController
   def update
     respond_to do |format|
       if @notice.update(notice_params)
-        format.html { redirect_to @notice, notice: 'Notice was successfully updated.' }
+        format.html { redirect_to @notice, primary: 'Notice was successfully updated.' }
         format.json { render :show, status: :ok, location: @notice }
       else
         format.html { render :edit }
@@ -46,7 +46,7 @@ class NoticesController < ApplicationController
   def destroy
     @notice.destroy
     respond_to do |format|
-      format.html { redirect_to notices_url, notice: 'Notice was successfully destroyed.' }
+      format.html { redirect_to notices_url, primary: 'Notice was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

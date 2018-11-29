@@ -4,10 +4,11 @@ class UserMailer < ApplicationMailer
   # with the following lookup:
   #
   #   en.user_mailer.new_registration.subject
-  #
+
   def new_registration(user)
     @user=user
-    mail(to: @user.email, subject: 'New Registration Notification')
+
+    mail(to: @user.email, subject: 'Candidate Registration Notification')
   end
 
 end

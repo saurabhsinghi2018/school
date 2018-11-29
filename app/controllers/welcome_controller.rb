@@ -20,4 +20,7 @@ class WelcomeController < ApplicationController
   def contact
   end
 
+  def schedule
+  end
+
 end
