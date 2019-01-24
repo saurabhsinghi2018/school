@@ -1,5 +1,10 @@
 class Section < ApplicationRecord
-  belongs_to :user
-  has_many :candidates,dependent: :destroy
-  validates :section, uniqueness: { case_sensitive: false ,scope: :user_id}, on: :create,on: :update
+  has_many :grades
+  validates :section, uniqueness: true, on: :create
+
+  before_save :upcase_fields
+
+   def upcase_fields
+      self.section.upcase!
+   end
 end

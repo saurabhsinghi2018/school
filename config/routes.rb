@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :users
 
   resources :sections do
+    resources :grades
+  end
+
+  resources :grades do
     resources :candidates
   end
 
@@ -17,7 +21,6 @@ Rails.application.routes.draw do
   get '/information' , to: "welcome#information"
   get '/fee', to:'welcome#fee'
   get    '/welcome',  to: 'welcome#welcome'
-  get '/schedule', to: 'welcome#schedule'
 
   get    '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'

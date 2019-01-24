@@ -19,7 +19,7 @@
         <th>Delete</th>
       </tr>
 
-    <% @section.candidates.each do |candidate| %>
+    <% @candidates.each do |candidate| %>
       <tr>
         <td>Mt-<%= candidate.id %></td>
         <td><%= link_to 'payment' , new_payment_path(candidate) %></td>

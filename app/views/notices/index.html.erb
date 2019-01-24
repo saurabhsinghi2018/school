@@ -20,15 +20,12 @@
   </article>
   <% end %>
 
-  <div class="admission">
-    <h2>For full details of the admission schedule click below</h2>
-    <%= link_to 'Schedule',schedule_path %>
-  </div>
-
   <% if admin? %>
   <%= link_to 'New Notice', new_notice_path %>
   <% end %>
 
 </div>
 
-<%= render 'welcome/footer' %>
+<% if logged_in?%>
+  <%= render 'welcome/footer' %>
+<% end %>

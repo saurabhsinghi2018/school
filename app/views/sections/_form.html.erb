@@ -15,7 +15,10 @@
 
   <div class="field">
     <%= form.label :section %>
-    <%= form.text_field :section , class: 'form-control' , required: 'required' %>
+    <!-- <td class="col-md-4"><%= form.select(:section, ['Kindergarten Section', 'Junior Section(Class 1 to 4)','Junior Section(Class 1 to 5)',"Boy's Section(class 5 to 12)","Boy's Section(class 6 to 12)", "Girl's Section(class 5 to 12)","Girl's Section(class 6 to 12)"]) %></td> -->
+    <!-- <td class="col-md-4"><%= form.select(:section, ['Kindergarten Section', 'Junior Section(Class 1 to 4)','Junior Section(Class 1 to 5)',"Boy's Section", "Girl's Section"]) %></td> -->
+
+    <%= form.text_field :section, class: 'form-control' , required: 'required' %>
   </div>
 
   <div class="actions mt-4 text-center">

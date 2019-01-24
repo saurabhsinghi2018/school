@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_for ([@candidate.section, @candidate]) do |f| %>
+  <%= form_for ([@candidate.grade, @candidate]) do |f| %>
 
   <% if @candidate.errors.any? %>
   <div id="error_explanation">
@@ -19,13 +19,45 @@
   </div>
 
   <div class="field">
-    <%= f.label :education %>
-    <%= f.text_field :education , class: 'form-control' %>
+    <%= f.label :last_education %>
+    <!-- <%= f.text_field :education , class: 'form-control' %> -->
+    <% if @grade.grade == "Kindergarten Section" || @grade.grade=="1"%>
+      <%= f.select(:education, ['Not Applicable']) %>
+    <% elsif @grade.grade == "2" %>
+      <%= f.select(:education, ['1']) %>
+    <% elsif @grade.grade == "3" %>
+      <%= f.select(:education, ['1','2']) %>
+    <% elsif @grade.grade == "4" %>
+        <%= f.select(:education, ['2','3']) %>
+    <% elsif @grade.grade == "5" %>
+      <%= f.select(:education, ['3','4']) %>
+    <% elsif @grade.grade == "6" %>
+      <%= f.select(:education, ['4','5']) %>
+    <% elsif @grade.grade == "7" %>
+      <%= f.select(:education, ['5','6']) %>
+    <% elsif @grade.grade == "8" %>
+      <%= f.select(:education, ['6','7']) %>
+    <% elsif @grade.grade == "9" %>
+      <%= f.select(:education, ['7','8']) %>
+    <% elsif @grade.grade == "10" %>
+      <%= f.select(:education, ['8','9']) %>
+    <% elsif @grade.grade == "11" %>
+      <%= f.select(:education, ['10']) %>
+    <% elsif @grade.grade == "12" %>
+      <%= f.select(:education, ['11']) %>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :passport_size_photo %>
-    <%= f.file_field :passportsizephoto , class: 'form-control' , required: 'required' %>
+    <% if @candidate.passportsizephoto? %>
+      <%= f.label :passport_size_photo  %>
+      <span><strong> : <%= image_tag @candidate.passportsizephoto.thumb.url %></strong></span>
+      <h6><strong>Or Update photo</strong></h6>
+      <%= f.file_field :passportsizephoto , class: 'form-control' %>
+    <% else %>
+      <%= f.label :passport_size_photo %>
+      <%= f.file_field :passportsizephoto , class: 'form-control' , required: 'required' %>
+    <% end %>
   </div>
 
   <div class="field">
@@ -45,18 +77,64 @@
 
   <div class="field">
     <%= f.label :father_contact_number %>
-    <%= f.text_field :fathercontactnumber , class: 'form-control' , required: 'required' %>
+    <%= f.text_field :fathercontactnumber , class: 'form-control' , required: 'required',type: 'number' %>
   </div>
 
   <div class="field">
     <%= f.label :mother_contact_number %>
-    <%= f.text_field :mothercontactnumber , class: 'form-control' , required: 'required'  %>
+    <%= f.text_field :mothercontactnumber , class: 'form-control' , required: 'required' ,type: 'number' %>
   </div>
 
   <div class="field">
-    <%= f.label :previous_grade_marksheet %>
-    <%= f.file_field :previousgrademarksheet , class: 'form-control'  %>
+      <% unless @grade.grade == "Kindergarten Section" || @grade.grade=='1' %>
+      <% if @candidate.previousgrademarksheet? %>
+        <%= f.label :previousgrademarksheet %>
+        <span>=><strong><%=  @candidate.previousgrademarksheet.url %></strong></span>
+        <h6><strong>Or Update marksheet</strong></h6>
+        <%= f.file_field :previousgrademarksheet , class: 'form-control' %>
+      <% else %>
+        <%= f.label :previous_grade_marksheet %>
+        <%= f.file_field :previousgrademarksheet , class: 'form-control' %>
+      <% end %>
+    <% end %>
   </div>
+
+  <% if admin? %>
+    <div class="field">
+      <%= f.label :application_status %>
+      <%= f.text_field :applicationstatus , class: 'form-control'  %>
+    </div>
+
+    <div class="field">
+      <%= f.label :reason %>
+      <%= f.text_field :reason , class: 'form-control'  %>
+    </div>
+
+    <% if @candidate.applicationstatus== 'ACCEPTED'%>
+
+    <div class="field">
+      <%= f.label :payment_status %>
+      <%= f.text_field :payment_status , class: 'form-control'  %>
+    </div>
+    
+      <div class="field">
+        <%= f.label :appointment_date %>
+        <%= f.date_field :appointment_date , class: 'form-control'  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :appointment_time %>
+        <%= f.time_field :appointment_time , class: 'form-control'  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :appointment_place %>
+        <%= f.text_field :appointment_place, class: 'form-control'  %>
+      </div>
+
+    <% end %>
+
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>

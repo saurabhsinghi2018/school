@@ -1,60 +1,101 @@
 <div class="container">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Class Applied For:</strong></td>
+          <td><%= @candidate.grade.grade %></td>
+        </tr>
+        <tr>
+          <td><strong>Candidatename:</strong></td>
+          <td><%= @candidate.candidatename %></td>
+        </tr>
+        <tr>
+          <td><strong>Education:</strong></td>
+          <td><%= @candidate.education %></td>
+        </tr>
+        <tr>
+          <td><strong>Passportsizephoto:</strong></td>
+          <td><%= image_tag @candidate.passportsizephoto.thumb.url %></td>
+        </tr>
+        <tr>
+          <td><strong>Fathername:</strong></td>
+          <td><%= @candidate.fathername %></td>
+        </tr>
+        <tr>
+          <td><strong>Mothername:</strong></td>
+          <td><%= @candidate.mothername %></td>
+        </tr>
+        <tr>
+          <td><strong>Contactaddress:</strong></td>
+          <td><%= @candidate.contactaddress %></td>
+        </tr>
+        <tr>
+          <td><strong>Fathercontactnumber:</strong></td>
+          <td><%= @candidate.fathercontactnumber %></td>
+        </tr>
+        <tr>
+          <td><strong>Mothercontactnumber:</strong></td>
+          <td><%= @candidate.mothercontactnumber %></td>
+        </tr>
+        <tr>
+          <td><strong>Previousgrademarksheet:</strong></td>
+          <td><%= @candidate.previousgrademarksheet %></td>
+        </tr>
+        <tr>
+          <% if @candidate.applicationstatus=="REJECTED" %>
+            <tr>
+              <td><strong>Appllication status:</strong></td>
+              <td><%= @candidate.applicationstatus %></td>
+            </tr>
+            <td><strong>Reason :</strong></td>
+            <td><%= @candidate.reason %></td>
+          <% elsif @candidate.applicationstatus=="ACCEPTED"%>
+            <tr>
+              <td><strong>Appllication status:</strong></td>
+              <td><%= @candidate.applicationstatus %></td>
+            </tr>
+            <tr>
+              <% if @candidate.payment_status== 'COMPLETED' %>
+                <td><strong>Payment Status : </strong></td>
+                <td>Payment has been done for the candidate</td>
+                <tr>
+                  <td><strong>Appointment Date</strong></td>
+                  <td><%= @candidate.appointment_date %></td>
+                </tr>
+                <tr>
+                  <td><strong>Appointment Time</strong></td>
+                  <td><%= @candidate.appointment_time %></td>
+                </tr>
+                <tr>
+                  <td><strong>Appointment Place</strong></td>
+                  <td><%= @candidate.appointment_place%></td>
+                </tr>
+              <% else %>
+                <td><strong>For Payment :</strong></td>
+                <td><%= link_to 'Click Here' , new_payment_path(@candidate) %></td>
+              <% end %>
+            </tr>
+          <% else %>
+            <td><strong>Appllication status:</strong></td>
+            <td><%= @candidate.applicationstatus = 'Under Process'%></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <p id="notice"><%= notice %></p>
+  <% if @candidate.applicationstatus=="REJECTED" %>
+  <% elsif  @candidate.applicationstatus=="ACCEPTED" %>
+  <% else %>
+    <strong><%= link_to 'Edit', edit_grade_candidate_path(@candidate.grade, @candidate) %> |</strong>
+  <% end %>
 
-  <p>
-    <strong>Section:</strong>
-    <%= @candidate.section.section %>
-  </p>
-
-  <p>
-    <strong>Candidatename:</strong>
-    <%= @candidate.candidatename %>
-  </p>
-
-  <p>
-    <strong>Education:</strong>
-    <%= @candidate.education %>
-  </p>
-
-  <p>
-    <strong>Passportsizephoto:</strong>
-    <%= image_tag @candidate.passportsizephoto.thumb.url %>
-  </p>
-
-  <p>
-    <strong>Fathername:</strong>
-    <%= @candidate.fathername %>
-  </p>
-
-  <p>
-    <strong>Mothername:</strong>
-    <%= @candidate.mothername %>
-  </p>
-
-  <p>
-    <strong>Contactaddress:</strong>
-    <%= @candidate.contactaddress %>
-  </p>
-
-  <p>
-    <strong>Fathercontactnumber:</strong>
-    <%= @candidate.fathercontactnumber %>
-  </p>
-
-  <p>
-    <strong>Mothercontactnumber:</strong>
-    <%= @candidate.mothercontactnumber %>
-  </p>
-
-  <p>
-    <strong>Previousgrademarksheet:</strong>
-    <%= @candidate.previousgrademarksheet %>
-  </p>
-
-  <%= link_to 'Edit', edit_section_candidate_path(@candidate.section, @candidate) %> |
-  <%= link_to 'Back', @section %>
-
+  <strong><%= link_to 'Back To Candidates List',  [@grade.section, @grade] %></strong>
 </div>
 
 <%= render 'welcome/footer' %>

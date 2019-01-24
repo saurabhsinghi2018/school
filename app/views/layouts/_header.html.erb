@@ -25,11 +25,14 @@
                 Admission
               </a>
               <div class="dropdown-menu drop" aria-labelledby="navbarDropdown">
-                <%= link_to 'Add Section', sections_path %>
+                <% if admin?%>
+                  <%= link_to 'All Section', sections_path %>
+                <% else %>
+                  <%= link_to 'Check Sections', sections_path %>
+                <% end %>
                 <%= link_to 'Eligibility' , eligibilities_path %>
                 <%= link_to 'Information' , information_path %>
                 <%= link_to 'Admission Notice' , notices_path %>
-                <%= link_to 'Schedule', schedule_path %>
                 <%= link_to 'Fee Structure' , fee_path %>
               </div>
             </li>

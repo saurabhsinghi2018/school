@@ -1,10 +1,18 @@
 class Candidate < ApplicationRecord
 
   has_one :payment
-  belongs_to :section
   belongs_to :user
+  belongs_to :grade
 
-  validates :candidatename,  uniqueness: { case_sensitive: false ,scope: :section_id}, on: :create
+  before_save :upcase_fields
+
+   def upcase_fields
+      self.applicationstatus.upcase!
+   end
+
+   def upcase_fields
+      self.payment_status.upcase!
+   end
 
   mount_uploader :passportsizephoto, ImageUploader
 

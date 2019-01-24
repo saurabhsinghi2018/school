@@ -13,6 +13,7 @@ gem "figaro"
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'mini_magick'
+gem 'nested_scaffold'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.7'
 gem 'sass-rails', '~> 5.0'

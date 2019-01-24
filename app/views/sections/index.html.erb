@@ -3,14 +3,17 @@
 
   <h1>Sections</h1>
 
+  <% if @sections.present? %>
   <div class="table-responsive">
       <table class="table table-hover">
         <thead>
           <tr>
             <th>Section</th>
-            <th>Add Candidates</th>
-            <th>Edit</th>
-            <th>Destroy</th>
+            <% if admin? %>
+              <th>All Grades</th>
+              <th>Edit</th>
+              <th>Destroy</th>
+            <% end %>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -19,18 +22,25 @@
           <% @sections.each do |section| %>
             <tr>
               <td><%= section.section %></td>
-              <td><%= link_to 'Candidates', section %></td>
-              <td><%= link_to 'Edit', edit_section_path(section) %></td>
-              <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><strong><%= link_to 'Check All Grades' , section%></strong></td>
+              <% if admin? %>
+                <td><%= link_to 'Edit', edit_section_path(section) %></td>
+                <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
             </tr>
           <% end %>
         </tbody>
       </table>
   </div>
+  <%else%>
+    <h3 class="details">No Sections Available</h3>
+  <% end %>
+
 
   <br>
-
-  <%= link_to 'New Section', new_section_path %>
+  <% if admin?%>
+    <%= link_to 'New Section', new_section_path %>
+  <% end %>
 </div>
 
 <%= render 'welcome/footer' %>

@@ -1,0 +1,28 @@
+<div class="container section">
+  <%= form_for([@grade.section, @grade]) do |f| %>
+    <% if @grade.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@grade.errors.count, "error") %> prohibited this grade from being saved:</h2>
+
+        <ul>
+        <% @grade.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :grade %><br />
+      <% if @section.section=='KINDERGARDEN'%>
+        <%= f.select(:grade,['KINDERGARDEN'])%>
+      <% else %>
+      <%= f.select(:grade,['1','2','3','4','5','6','7','8','9','10','11','12'])%>
+      <% end %>
+      <!-- <%= f.text_field :grade %> -->
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

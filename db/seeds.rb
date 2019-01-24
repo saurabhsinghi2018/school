@@ -27,12 +27,8 @@ User.create(
 Section.create([
   {
     section:'kindergarden section',
-    user_id:'1'
   },
   {
-    section:'class 1',
-    user_id:'1'
-  },
-    section:"CLASS 5(BOY'S)",
-    user_id:'2'
+    section:'junior',
+  }
   ])

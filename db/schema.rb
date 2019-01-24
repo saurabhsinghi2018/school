@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181128091450) do
+ActiveRecord::Schema.define(version: 20190124111619) do
 
   create_table "candidates", force: :cascade do |t|
     t.string   "candidatename"
@@ -24,9 +24,15 @@ ActiveRecord::Schema.define(version: 20181128091450) do
     t.string   "previousgrademarksheet"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "section_id"
     t.integer  "user_id"
-    t.index ["section_id"], name: "index_candidates_on_section_id"
+    t.string   "applicationstatus"
+    t.string   "reason"
+    t.string   "payment_status"
+    t.integer  "grade_id"
+    t.string   "appointment_date"
+    t.string   "appointment_time"
+    t.string   "appointment_place"
+    t.index ["grade_id"], name: "index_candidates_on_grade_id"
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
@@ -37,6 +43,14 @@ ActiveRecord::Schema.define(version: 20181128091450) do
     t.string   "dateason"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.integer  "section_id"
+    t.string   "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["section_id"], name: "index_grades_on_section_id"
   end
 
   create_table "notices", force: :cascade do |t|
@@ -58,8 +72,6 @@ ActiveRecord::Schema.define(version: 20181128091450) do
     t.string   "section"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_sections_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

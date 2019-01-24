@@ -1,52 +1,41 @@
 <div class="container section">
-  <p id="notice"><%= notice %></p>
+  <h2><%= @section.section%></h2>
 
-  <h2><%= @section.section %></h2>
-
-  <div class="table-responsive container candidates">
-    <table class="table">
-      <tr>
-        <th>candidate id</th>
-        <th>payment</th>
-        <th>Candidatename</th>
-        <th>Education</th>
-        <th>Passportsizephoto</th>
-        <th>Fathername</th>
-        <th>Mothername</th>
-        <th>Fathercontactnumber</th>
-        <th>Mothercontactnumber</th>
-        <th>Contactaddress</th>
-        <th>Previousgrademarksheet</th>
-        <th>Show</th>
+  <%= link_to("<< Back to Section List", sections_path, class:'btn btn-primary') %>
+  <% if @grades.present? %>
+  <h3>Listing grades</h3>
+  <table class="table">
+    <tr>
+      <th>Grade</th>
+      <th></th>
+      <% if admin? %>
         <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-
-      <% @section.candidates.each do |candidate| %>
-      <tr>
-        <td>Mt-<%= candidate.id %></td>
-        <td><%= link_to 'payment' , new_payment_path(candidate) %></td>
-        <td><%= candidate.candidatename %></td>
-        <td><%= candidate.education %></td>
-        <td><%= candidate.passportsizephoto %></td>
-        <td><%= candidate.fathername %></td>
-        <td><%= candidate.mothername %></td>
-        <td><%= candidate.fathercontactnumber %></td>
-        <td><%= candidate.mothercontactnumber %></td>
-        <td><%= candidate.contactaddress %></td>
-        <td><%= candidate.previousgrademarksheet %></td>
-        <td><%= link_to 'Show', [candidate.section, candidate] %></td>
-        <td><%= link_to 'Edit', edit_section_candidate_path(candidate.section, candidate) %></td>
-        <td><%= link_to 'Delete', [candidate.section, candidate], :confirm => 'Are you sure?', :method => :delete %></td>
-      </tr>
+        <th>Destroy</th>
       <% end %>
-    </table>
+    </tr>
 
-    <%= link_to 'Add New Candidate', new_section_candidate_path(@section) %>
-  </div>
+  <% @grades.each do |grade| %>
+    <tr>
+      <td><%= grade.grade %></td>
+      <td><strong><%= link_to 'Check All Candidates', [grade.section, grade] %></strong></td>
+      <% if admin? %>
+      <td><%= link_to 'Edit', edit_section_grade_path(grade.section, grade) %></td>
+      <td><%= link_to 'Destroy', [grade.section, grade], :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
 
-  <%= link_to 'Edit', edit_section_path(@section) %> |
-  <%= link_to 'Back', sections_path %>
+    </tr>
+  <% end %>
+  </table>
+  <% else %>
+    <h5>No grades has been added</h5>
+  <% end %>
+
+  <br />
+
+  <% if admin?%>
+    <%= link_to 'New Grade', new_section_grade_path(@section), class:'btn btn-primary' %>
+  <% end %>
+
 </div>
 
 <%= render 'welcome/footer' %>

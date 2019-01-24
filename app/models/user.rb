@@ -1,7 +1,6 @@
 class User < ApplicationRecord
 
-  has_many :sections
-  has_many :candidates, through: :sections
+  has_many :candidates,dependent: :destroy
   
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }

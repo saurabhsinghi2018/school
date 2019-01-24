@@ -3,8 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .candidates {
   margin-top: 60px;
-  margin-bottom: 150px;
+  margin-bottom: 120px;
   table,th,td{
     border: 2px solid;
   }
+}
+
+.details{
+  background-color: #dddd;
+  font-size: 30px;
+ padding: 14px 25px;
+ text-align: center;
+ text-decoration: none;
+ display: inline-block;
 }

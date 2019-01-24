@@ -1,31 +1,11 @@
 <div class="container">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Important Instructions
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h3>For the education and marksheet part:</h3>
-          <p>Do not fill the portion if u are applying for kindergarden section.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <h1>Editing Candidate</h1>
 
   <%= render 'form', candidate: [@candidate] %>
 
-  <%= link_to 'Show', [@candidate.section, @candidate] %> |
-  <%= link_to 'Back', @section %>
+  <%= link_to 'Show', [@candidate.grade, @candidate] %> |
+  <%= link_to 'Back To Candidates List',  [@grade.section, @grade] %>
 
 </div>
 

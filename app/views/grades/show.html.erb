@@ -1,0 +1,70 @@
+<div class="container section">
+  <%= link_to("<< Back to Grades List", @section, class:'btn btn-primary') %>
+  <h2>GRADE :<%= @grade.grade %></h2>
+  <br>
+  <% if current_user.admin? %>
+    <% if @candidates.present? %>
+      <h3>Candidates List : </h3>
+      <div class="table-responsive container candidates">
+        <table class="table">
+          <tr>
+            <th>candidate id</th>
+            <th>Candidatename</th>
+            <th>Education</th>
+            <th>Full Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <% @candidates.each do |candidate| %>
+          <tr>
+            <td>Mt-<%= candidate.id %></td>
+            <td><%= candidate.candidatename %></td>
+            <td><%= candidate.education %></td>
+            <td><%= link_to("Click Here", grade_candidate_path(@grade.id,candidate))%></td>
+            <td><%= link_to("Edit", edit_grade_candidate_path(@grade.id,candidate))%></td>
+            <td><%= link_to 'Delete', [candidate.grade, candidate], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <% else %>
+        <h4>No Candidates to Show</h4>
+    <% end %>
+
+  <% else %>
+    <% if @candidates.present? %>
+      <h3>Candidates List : </h3>
+      <div class="table-responsive container candidates">
+        <table class="table">
+          <tr>
+            <th>candidate id</th>
+            <th>Candidatename</th>
+            <th>Education</th>
+            <th>Full Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <% @candidates.each do |candidate| %>
+          <tr>
+            <td>Mt-<%= candidate.id %></td>
+            <td><%= candidate.candidatename %></td>
+            <td><%= candidate.education %></td>
+            <td><%= link_to("Click Here", grade_candidate_path(@grade.id,candidate))%></td>
+            <% if candidate.applicationstatus =="ACCEPTED" %>
+              <td>N.A</td>
+            <% elsif candidate.applicationstatus =="REJECTED" %>
+              <td>N.A</td>
+            <% else %>
+              <td><%= link_to("Edit", edit_grade_candidate_path(@grade.id,candidate))%></td>
+            <% end %>
+            <td><%= link_to 'Delete', [candidate.grade, candidate], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <% end %>
+      <%= link_to 'Add New Candidate', new_grade_candidate_path(@grade), class:'btn btn-primary' %>
+  <% end %>
+</div>
+
+<%= render 'welcome/footer'%>

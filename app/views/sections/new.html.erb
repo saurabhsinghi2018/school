@@ -1,48 +1,6 @@
 <div class="container  section">
   <h1>New Section</h1>
-
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Choose Sections From Here
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <ul>
-            <li>KINDERGARDEN SECTION</li>
-            <li>CLASS 1</li>
-            <li>CLASS 2</li>
-            <li>CLASS 3</li>
-            <li>CLASS 4</li>
-            <li>CLASS 5(BOY'S)</li>
-            <li>CLASS 5(GIRL'S)</li>
-            <li>CLASS 6(BOY'S)</li>
-            <li>CLASS 6(GIRL'S)</li>
-            <li>CLASS 7(BOY'S)</li>
-            <li>CLASS 7(GIRL'S)</li>
-            <li>CLASS 8(BOY'S)</li>
-            <li>CLASS 8(GIRL'S)</li>
-            <li>CLASS 9(BOY'S)</li>
-            <li>CLASS 9(GIRL'S)</li>
-            <li>CLASS 10(BOY'S)</li>
-            <li>CLASS 10(GIRL'S)</li>
-            <li>CLASS 11(BOY'S)</li>
-            <li>CLASS 11(GIRL'S)</li>
-            <li>CLASS 12(BOY'S)</li>
-            <li>CLASS 12(GIRL'S)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <%= render 'form', section: @section %>
 
   <%= link_to 'Back', sections_path %>

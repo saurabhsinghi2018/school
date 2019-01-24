@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless admin?
-      redirect_to root_path
+      redirect_to welcome_path
+      flash[:danger]="You are not authorized to perform this action"
       false
     end
   end

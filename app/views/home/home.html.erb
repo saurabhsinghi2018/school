@@ -1,5 +1,82 @@
 <% if logged_in? %>
     <%= render 'welcome/tab' %>
   <% else %>
-    <img class="col-md-12" src="http://i67.tinypic.com/2iber1l.jpg" alt="school building">
+    <!-- <img class="col-md-12" src="http://i67.tinypic.com/2iber1l.jpg" alt="school building"> -->
+    <div class="container">
+
+      <div class="row">
+
+        <div id="carousel-example-generic" class="carousel slide col-md-12 col-lg-8" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <img src="http://i66.tinypic.com/4ih4pz.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img src="http://i64.tinypic.com/6enlp3.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img src="http://i66.tinypic.com/14ik0zn.jpg" alt="Third slide">
+            </div>
+            <div class="carousel-item">
+              <img src="http://i64.tinypic.com/709t9t.jpg" alt="Fourth slide">
+            </div>
+            </div>
+          </div>
+
+          <aside class="col-lg-4">
+            <p>Welcome to Mt.high, a school that is dedicated to nurturing young minds into accomplished, confident and dynamic young citizens of tomorrow. Founded by the SSR Trust and led by the guiding principles of His Holiness to provide value education in a friendly stress-free environment.
+              Only an education that nourishes inherent virtues can impart true intelligence. Today, it is the concern of all parents that their children should grow up to be happy, well-educated human beings with core values.
+            </p>
+          </aside>
+
+        </div>
+
+        <main>
+
+          <article>
+            <h3>Message From principal</h3>
+            <span class="principal">
+              <img class="img-fluid" src="http://i68.tinypic.com/200qmw0.jpg" alt="principal">
+              <p>A warm welcome to each one who visits the Mt.HIGH website. It is through this medium that we offer you an insight into the school lives and activities of our students and members of the staff.
+                As I look at all the moments captured and articles posted on our site, I find myself reflecting on the world of today. With the ongoing technological advancement on one side, society is constantly progressing in leaps and bounds. However, on the flip side, we see media and the access to it being grossly mi s-utilised, challenges to which our society at large is being subject to, in the form of communal disharmony in a country which otherwise propagated and prided itself on its unity in diversity.  This only makes me realise the powerful instruments we have to make a positive change in our society and country- OUR CHILDREN, who are our future. I wish that every parent recognises the immense responsibility we have in nurturing our young to bring about a better tomorrow. I also wish that every young person realises that the future of this world is entrusted to them.</p>
+            </span>
+              <h6>PRINCIPAL</h6>
+              <P>Mrs. shovina shongla</P>
+          </article>
+
+        </main>
+
+        <div class="admission mb-3">
+          <h3 class="text-white bg-dark"> Admission Notices</h3>
+          <%= link_to 'Click Here' , notices_path , class:'btn btn-warning btn-lg' %>
+        </div>
+
+        <!-- <div class="row mt-3">
+
+          <div class="col-md-3 m-3 border border-secondary bg-light text-dark">
+            <p>No Afternoon Activities will be held from 10.11.18 till the School Annual Sports on 3.12.18.Kindly Note: Afternoon Activities will resume from 5.12.18.</p>
+          </div>
+
+          <div class="col-md-3 m-3 border border-secondary bg-light text-dark">
+            <p>Students of Class XII are hereby informed that the Hindi / Bengali Language Test for Pre Selection Examination of Class XII which was scheduled to be held on 14th November, 2018 (Wednesday) will instead be held on 13 th November, 2018 (Tuesday). Reporting time to school is 7:30 a.m.</p>
+          </div>
+
+          <div class="col-md-3 m-3 border border-secondary bg-light text-dark">
+            <p>Pre-boards for both class 10 and 12 will be from 5-15 January 2019.</p>
+            <p>The pre-boards practicals will be from 17-24 January 2019. </p>
+          </div>
+
+        </div> -->
+
+        <div class="admission">
+          <h3 class="text-white bg-dark">Age Eligibility for admission to various classes</h3>
+          <h5><%= link_to 'Click Here' , eligibilities_path ,class:'btn btn-primary btn-lg'%></h5>
+        </div>
+    </div>
 <% end %>

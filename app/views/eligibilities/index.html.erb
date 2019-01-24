@@ -41,4 +41,6 @@
 
 </div>
 
-<%= render 'welcome/footer' %>
+<% if logged_in?%>
+  <%= render 'welcome/footer' %>
+<% end %>
