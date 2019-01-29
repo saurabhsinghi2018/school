@@ -1,5 +1,5 @@
 class Section < ApplicationRecord
-  has_many :grades
+  has_many :grades,dependent: :destroy
   validates :section, uniqueness: true, on: :create
 
   before_save :upcase_fields

@@ -100,38 +100,43 @@
   </div>
 
   <% if admin? %>
-    <div class="field">
-      <%= f.label :application_status %>
-      <%= f.text_field :applicationstatus , class: 'form-control'  %>
-    </div>
-
-    <div class="field">
-      <%= f.label :reason %>
-      <%= f.text_field :reason , class: 'form-control'  %>
-    </div>
+    <% if @candidate.applicationstatus.present? %>
+    <% else %>
+      <div class="field">
+        <%= f.label :application_status %>
+        <%= f.select(:applicationstatus,['ACCEPTED','REJECTED'])%>
+      </div>
+    <% end %>
 
     <% if @candidate.applicationstatus== 'ACCEPTED'%>
 
-    <div class="field">
-      <%= f.label :payment_status %>
-      <%= f.text_field :payment_status , class: 'form-control'  %>
-    </div>
-    
-      <div class="field">
-        <%= f.label :appointment_date %>
-        <%= f.date_field :appointment_date , class: 'form-control'  %>
-      </div>
+        <% if @candidate.payment_status.present? and @candidate.payment_status=='COMPLETED'%>
+          <div class="field">
+            <%= f.label :appointment_date %>
+            <%= f.date_field :appointment_date , class: 'form-control'  %>
+          </div>
 
-      <div class="field">
-        <%= f.label :appointment_time %>
-        <%= f.time_field :appointment_time , class: 'form-control'  %>
-      </div>
+          <div class="field">
+            <%= f.label :appointment_time %>
+            <%= f.time_field :appointment_time , class: 'form-control'  %>
+          </div>
 
-      <div class="field">
-        <%= f.label :appointment_place %>
-        <%= f.text_field :appointment_place, class: 'form-control'  %>
-      </div>
+          <div class="field">
+            <%= f.label :appointment_place %>
+            <%= f.text_field :appointment_place, class: 'form-control'  %>
+          </div>
+        <% else %>
+          <div class="field">
+            <%= f.label :payment_status %>
+            <%= f.select(:payment_status,['NOT COMPLETE','COMPLETED'])%>
+          </div>
+        <% end %>
 
+        <% elsif @candidate.applicationstatus=="REJECTED"%>
+          <div class="field">
+            <%= f.label :reason %>
+            <%= f.text_field :reason , class: 'form-control'  %>
+          </div>
     <% end %>
 
   <% end %>

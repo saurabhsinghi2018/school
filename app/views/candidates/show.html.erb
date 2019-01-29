@@ -52,8 +52,10 @@
               <td><strong>Appllication status:</strong></td>
               <td><%= @candidate.applicationstatus %></td>
             </tr>
-            <td><strong>Reason :</strong></td>
-            <td><%= @candidate.reason %></td>
+            <% if @candidate.reason.present?%>
+              <td><strong>Reason :</strong></td>
+              <td><%= @candidate.reason %></td>
+            <% end %>
           <% elsif @candidate.applicationstatus=="ACCEPTED"%>
             <tr>
               <td><strong>Appllication status:</strong></td>
@@ -63,18 +65,24 @@
               <% if @candidate.payment_status== 'COMPLETED' %>
                 <td><strong>Payment Status : </strong></td>
                 <td>Payment has been done for the candidate</td>
-                <tr>
-                  <td><strong>Appointment Date</strong></td>
-                  <td><%= @candidate.appointment_date %></td>
-                </tr>
-                <tr>
-                  <td><strong>Appointment Time</strong></td>
-                  <td><%= @candidate.appointment_time %></td>
-                </tr>
-                <tr>
-                  <td><strong>Appointment Place</strong></td>
-                  <td><%= @candidate.appointment_place%></td>
-                </tr>
+                <% if @candidate.appointment_date.present? %>
+                  <tr>
+                    <td><strong>Appointment Date</strong></td>
+                    <td><%= @candidate.appointment_date %></td>
+                  </tr>
+                <% end %>
+                <% if @candidate.appointment_time.present? %>
+                  <tr>
+                    <td><strong>Appointment Time</strong></td>
+                    <td><%= @candidate.appointment_time %></td>
+                  </tr>
+                <% end %>
+                <% if @candidate.appointment_place.present? %>
+                  <tr>
+                    <td><strong>Appointment Place</strong></td>
+                    <td><%= @candidate.appointment_place%></td>
+                  </tr>
+                <% end %>
               <% else %>
                 <td><strong>For Payment :</strong></td>
                 <td><%= link_to 'Click Here' , new_payment_path(@candidate) %></td>
@@ -89,11 +97,21 @@
     </table>
   </div>
 
-  <% if @candidate.applicationstatus=="REJECTED" %>
+  <% if admin?%>
+    <strong><%= link_to 'Edit', edit_grade_candidate_path(@candidate.grade, @candidate) %> |</strong>
+  <% else %>
+    <% if @candidate.applicationstatus=="REJECTED" %>
+    <% elsif  @candidate.applicationstatus=="ACCEPTED" %>
+    <% else %>
+      <strong><%= link_to 'Edit', edit_grade_candidate_path(@candidate.grade, @candidate) %> |</strong>
+    <% end %>
+  <% end %>
+
+  <!-- <% if @candidate.applicationstatus=="REJECTED" %>
   <% elsif  @candidate.applicationstatus=="ACCEPTED" %>
   <% else %>
     <strong><%= link_to 'Edit', edit_grade_candidate_path(@candidate.grade, @candidate) %> |</strong>
-  <% end %>
+  <% end %> -->
 
   <strong><%= link_to 'Back To Candidates List',  [@grade.section, @grade] %></strong>
 </div>

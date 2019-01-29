@@ -33,7 +33,7 @@ class GradesController < ApplicationController
     @grade = @section.grades.build(grade_params)
 
     if @grade.save
-      redirect_to([@grade.section, @grade], primary: 'Grade was successfully created.')
+      redirect_to(section_grades_path(@grade.section), primary: 'Grade was successfully created.')
     else
       render action: 'new'
     end

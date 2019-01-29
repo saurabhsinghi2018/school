@@ -4,16 +4,6 @@ class Candidate < ApplicationRecord
   belongs_to :user
   belongs_to :grade
 
-  before_save :upcase_fields
-
-   def upcase_fields
-      self.applicationstatus.upcase!
-   end
-
-   def upcase_fields
-      self.payment_status.upcase!
-   end
-
   mount_uploader :passportsizephoto, ImageUploader
 
   mount_uploader :previousgrademarksheet , AttachmentUploader

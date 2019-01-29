@@ -6,7 +6,6 @@ class CandidatesController < ApplicationController
   # GET grades/1/candidates
   def index
     @candidate = current_user.candidate
-
     # @candidates = @grade.candidates
   end
 
@@ -41,7 +40,11 @@ class CandidatesController < ApplicationController
   # PUT grades/1/candidates/1
   def update
     if @candidate.update_attributes(candidate_params)
-      redirect_to([@candidate.grade, @candidate], primary: 'Candidate was successfully updated.')
+      if admin?
+        redirect_to (edit_grade_candidate_path(@candidate.grade, @candidate))
+      else
+        redirect_to([@candidate.grade, @candidate], primary: 'Candidate was successfully updated.')
+      end
     else
       render action: 'edit'
     end
