@@ -1,0 +1,106 @@
+<% if admin? and (@candidate.applicationstatus=="ACCEPTED" || @candidate.applicationstatus=="REJECTED") %>
+  <div class="container border border-danger section">
+    <div class="table-responsive">
+      <h1><strong>FILLED UP DETAILS</strong></h1>
+      <table class="table">
+        <thead>
+          <tr>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Class Applied For:</strong></td>
+            <td><%= @candidate.grade.grade %></td>
+          </tr>
+          <tr>
+            <td><strong>Candidatename:</strong></td>
+            <td><%= @candidate.candidatename %></td>
+          </tr>
+          <tr>
+            <td><strong>Education:</strong></td>
+            <td><%= @candidate.education %></td>
+          </tr>
+          <tr>
+            <td><strong>Passportsizephoto:</strong></td>
+            <td><%= image_tag @candidate.passportsizephoto.thumb.url %></td>
+          </tr>
+          <tr>
+            <td><strong>Fathername:</strong></td>
+            <td><%= @candidate.fathername %></td>
+          </tr>
+          <tr>
+            <td><strong>Mothername:</strong></td>
+            <td><%= @candidate.mothername %></td>
+          </tr>
+          <tr>
+            <td><strong>Contactaddress:</strong></td>
+            <td><%= @candidate.contactaddress %></td>
+          </tr>
+          <tr>
+            <td><strong>Fathercontactnumber:</strong></td>
+            <td><%= @candidate.fathercontactnumber %></td>
+          </tr>
+          <tr>
+            <td><strong>Mothercontactnumber:</strong></td>
+            <td><%= @candidate.mothercontactnumber %></td>
+          </tr>
+          <tr>
+            <td><strong>Previousgrademarksheet:</strong></td>
+            <td><%= @candidate.previousgrademarksheet %></td>
+          </tr>
+          <tr>
+            <% if @candidate.applicationstatus=="REJECTED" %>
+              <tr>
+                <td><strong>Appllication status:</strong></td>
+                <td><%= @candidate.applicationstatus %></td>
+              </tr>
+              <% if @candidate.reason.present?%>
+                <td><strong>Reason :</strong></td>
+                <td><%= @candidate.reason %></td>
+              <% end %>
+            <% elsif @candidate.applicationstatus=="ACCEPTED"%>
+              <tr>
+                <td><strong>Appllication status:</strong></td>
+                <td><%= @candidate.applicationstatus %></td>
+              </tr>
+              <tr>
+                <% if @candidate.payment_status== 'COMPLETED' %>
+                  <td><strong>Payment Status : </strong></td>
+                  <td>Payment has been done for the candidate</td>
+                  <% if @candidate.appointment_date.present? %>
+                    <tr>
+                      <td><strong>Appointment Date</strong></td>
+                      <td><%= @candidate.appointment_date %></td>
+                    </tr>
+                  <% end %>
+                  <% if @candidate.appointment_time.present? %>
+                    <tr>
+                      <td><strong>Appointment Time</strong></td>
+                      <td><%= @candidate.appointment_time %></td>
+                    </tr>
+                  <% end %>
+                  <% if @candidate.appointment_place.present? %>
+                    <tr>
+                      <td><strong>Appointment Place</strong></td>
+                      <td><%= @candidate.appointment_place%></td>
+                    </tr>
+                  <% end %>
+                <% else %>
+                  <% unless admin?%>
+                    <td><strong>For Payment :</strong></td>
+                    <td><%= link_to 'Click Here' , new_payment_path(@candidate) %></td>
+                  <% end %>
+                <% end %>
+              </tr>
+            <% else %>
+              <td><strong>Appllication status:</strong></td>
+              <td><%= @candidate.applicationstatus = 'Under Process'%></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+<% end %>
