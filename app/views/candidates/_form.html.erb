@@ -113,12 +113,12 @@
         <% if @candidate.payment_status.present? and @candidate.payment_status=='COMPLETED'%>
           <div class="field">
             <%= f.label :appointment_date %>
-            <%= f.date_field :appointment_date , class: 'form-control'  %>
+            <%= f.date_field :appointment_date ,value: @candidate.appointment_date, class: 'form-control'  %>
           </div>
 
           <div class="field">
             <%= f.label :appointment_time %>
-            <%= f.time_field :appointment_time , class: 'form-control'  %>
+            <%= f.time_field :appointment_time ,value: @candidate.appointment_time, class: 'form-control'  %>
           </div>
 
           <div class="field">
