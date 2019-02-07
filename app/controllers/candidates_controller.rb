@@ -52,7 +52,7 @@ class CandidatesController < ApplicationController
 
     def destroy
       @candidate.destroy
-      redirect_to [@grade.section, @grade]
+      redirect_to [ @grade]
     end
 
   private

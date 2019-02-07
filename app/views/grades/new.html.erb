@@ -1,9 +1,9 @@
 <div class="container section">
-  <h1>New grade</h1>
+  <h1>New Grade</h1>
 
-  <%= render 'form' %>
+  <%= render 'form', grade: @grade %>
 
-  <%= link_to 'Back', section_grades_path(@grade.section) %>
+  <%= link_to 'Back', grades_path %>
 </div>
 
 <%= render 'welcome/footer' %>

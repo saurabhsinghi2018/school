@@ -1,15 +1,15 @@
 class GradesController < ApplicationController
-  before_action :set_grades
-  before_action :set_grade, only: [:show, :edit, :update, :destroy]
+  before_action :set_grade, only: [:show, :edit, :update, :destroy,:modify]
   before_action :logged_in_user
-  before_action :correct_user
 
-  # GET sections/1/grades
+  # GET /grades
+  # GET /grades.json
   def index
-    @grades = @section.grades
+    @grades = Grade.all
   end
 
-  # GET sections/1/grades/1
+  # GET /grades/1
+  # GET /grades/1.json
   def show
     @user = User.find(current_user.id)
     if current_user.admin?
@@ -19,54 +19,63 @@ class GradesController < ApplicationController
     end
   end
 
-  # GET sections/1/grades/new
+  # GET /grades/new
   def new
-    @grade = @section.grades.build
+    @grade = Grade.new
   end
 
-  # GET sections/1/grades/1/edit
+  # GET /grades/1/edit
   def edit
   end
 
-  # POST sections/1/grades
+  # POST /grades
+  # POST /grades.json
   def create
-    @grade = @section.grades.build(grade_params)
+    @grade = Grade.new(grade_params)
 
-    if @grade.save
-      redirect_to(section_grades_path(@grade.section), primary: 'Grade was successfully created.')
-    else
-      render action: 'new'
+    respond_to do |format|
+      if @grade.save
+        format.html { redirect_to grades_path, primary: 'Grade was successfully created.' }
+        format.json { render :show, status: :created, location: @grade }
+      else
+        format.html { render :new }
+        format.json { render json: @grade.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  # PUT sections/1/grades/1
+  # PATCH/PUT /grades/1
+  # PATCH/PUT /grades/1.json
   def update
-    if @grade.update_attributes(grade_params)
-      redirect_to([@grade.section, @grade], primary: 'Grade was successfully updated.')
-    else
-      render action: 'edit'
+    respond_to do |format|
+      if @grade.update(grade_params)
+        format.html { redirect_to @grade, primary: 'Grade was successfully updated.' }
+        format.json { render :show, status: :ok, location: @grade }
+      else
+        format.html { render :edit }
+        format.json { render json: @grade.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  # DELETE sections/1/grades/1
+  # DELETE /grades/1
+  # DELETE /grades/1.json
   def destroy
     @grade.destroy
-
-    redirect_to section_grades_url(@section)
+    respond_to do |format|
+      format.html { redirect_to grades_url, primary: 'Grade was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_grades
-      @section = Section.find(params[:section_id])
-    end
-
     def set_grade
-      @grade = @section.grades.find(params[:id])
+      @grade = Grade.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Never trust parameters from the scary internet, only allow the white list through.
     def grade_params
-      params.require(:grade).permit(:grade)
+      params.require(:grade).permit(:grade, {:section_ids => []})
     end
 end

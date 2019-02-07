@@ -113,7 +113,7 @@
     <strong><%= link_to 'Edit', edit_grade_candidate_path(@candidate.grade, @candidate) %> |</strong>
   <% end %> -->
 
-  <strong><%= link_to 'Back To Candidates List',  [@grade.section, @grade] %></strong>
+  <strong><%= link_to 'Back To Candidates List',  [ @grade] %></strong>
 </div>
 
 <%= render 'welcome/footer' %>

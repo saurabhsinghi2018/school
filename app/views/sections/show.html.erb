@@ -9,18 +9,18 @@
       <th>Grade</th>
       <th></th>
       <% if admin? %>
-        <th>Edit</th>
-        <th>Destroy</th>
+        <!-- <th>Add Grades/Edit</th> -->
+        <!-- <th>Destroy</th> -->
       <% end %>
     </tr>
 
   <% @grades.each do |grade| %>
     <tr>
       <td><%= grade.grade %></td>
-      <td><strong><%= link_to 'Check All Candidates', [grade.section, grade] %></strong></td>
+      <td><strong><%= link_to 'Check All Candidates', [grade] %></strong></td>
       <% if admin? %>
-      <td><%= link_to 'Edit', edit_section_grade_path(grade.section, grade) %></td>
-      <td><%= link_to 'Destroy', [grade.section, grade], :confirm => 'Are you sure?', :method => :delete %></td>
+      <!-- <td><%= link_to 'Add Grades/Edit', edit_grade_path(grade) %></td> -->
+      <!-- <td><%= link_to 'Destroy', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       <% end %>
 
     </tr>
@@ -32,9 +32,9 @@
 
   <br />
 
-  <% if admin?%>
-    <%= link_to 'New Grade', new_section_grade_path(@section), class:'btn btn-primary' %>
-  <% end %>
+  <!-- <% if admin?%>
+    <%= link_to 'New Grade', new_grade_path, class:'btn btn-primary' %>
+  <% end %> -->
 
 </div>
 

@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :sections do
-    resources :grades
-  end
+  resources :sections
+
+  resources :grades
+
 
   resources :grades do
     resources :candidates

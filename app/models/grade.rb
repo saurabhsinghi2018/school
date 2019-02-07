@@ -1,7 +1,5 @@
 class Grade < ApplicationRecord
-  belongs_to :section
-  has_many :candidates,dependent: :destroy
-  validates :grade, uniqueness:{ case_sensitive: false ,scope: :section_id}, on: :create
-
-
+  has_and_belongs_to_many :sections
+  validates :grade, uniqueness: true
+  has_many :candidates
 end

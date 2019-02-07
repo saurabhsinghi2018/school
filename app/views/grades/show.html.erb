@@ -1,5 +1,5 @@
 <div class="container section">
-  <%= link_to("<< Back to Grades List", @section, class:'btn btn-primary') %>
+  <%= link_to("<< Back to Sections List", sections_path, class:'btn btn-primary') %>
   <h2>GRADE :<%= @grade.grade %></h2>
   <br>
   <% if current_user.admin? %>
@@ -28,7 +28,9 @@
         </table>
       </div>
       <% else %>
-        <h4>No Candidates to Show</h4>
+        <div class="section">
+          <h4><strong>No Candidates to Show</strong></h4>
+        </div>
     <% end %>
 
   <% else %>
@@ -67,4 +69,6 @@
   <% end %>
 </div>
 
-<%= render 'welcome/footer'%>
+<div class="empty">
+  <%= render 'welcome/footer'%>
+</div>
