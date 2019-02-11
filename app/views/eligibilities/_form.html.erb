@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= f.label :date_of_birth_till %>
-    <%= f.date_field :dateofbirthtill ,class:'form-control' %>
+    <%= f.date_field :date_of_birth_till ,value:@eligibility.date_of_birth_till,class:'form-control' %>
   </div>
 
   <div class="field">
@@ -30,7 +30,7 @@
 
   <div class="field">
     <%= f.label :date_as_on %>
-    <%= f.date_field :dateason ,class:'form-control' %>
+    <%= f.date_field :date_as_on ,value:@eligibility.date_as_on,class:'form-control' %>
   </div>
 
   <div class="actions">

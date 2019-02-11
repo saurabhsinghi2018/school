@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <td><strong>Candidatename:</strong></td>
-          <td><%= @candidate.candidatename %></td>
+          <td><%= @candidate.candidate_name %></td>
         </tr>
         <tr>
           <td><strong>Education:</strong></td>
@@ -20,46 +20,46 @@
         </tr>
         <tr>
           <td><strong>Passportsizephoto:</strong></td>
-          <td><%= image_tag @candidate.passportsizephoto.thumb.url %></td>
+          <td><%= image_tag @candidate.passport_size_photo.thumb.url %></td>
         </tr>
         <tr>
           <td><strong>Fathername:</strong></td>
-          <td><%= @candidate.fathername %></td>
+          <td><%= @candidate.father_name %></td>
         </tr>
         <tr>
           <td><strong>Mothername:</strong></td>
-          <td><%= @candidate.mothername %></td>
+          <td><%= @candidate.mother_name %></td>
         </tr>
         <tr>
           <td><strong>Contactaddress:</strong></td>
-          <td><%= @candidate.contactaddress %></td>
+          <td><%= @candidate.contact_address %></td>
         </tr>
         <tr>
           <td><strong>Fathercontactnumber:</strong></td>
-          <td><%= @candidate.fathercontactnumber %></td>
+          <td><%= @candidate.contact_father %></td>
         </tr>
         <tr>
           <td><strong>Mothercontactnumber:</strong></td>
-          <td><%= @candidate.mothercontactnumber %></td>
+          <td><%= @candidate.contact_mother %></td>
         </tr>
         <tr>
           <td><strong>Previousgrademarksheet:</strong></td>
-          <td><%= @candidate.previousgrademarksheet %></td>
+          <td><%= @candidate.previous_grade_marksheet %></td>
         </tr>
         <tr>
-          <% if @candidate.applicationstatus=="REJECTED" %>
+          <% if @candidate.application_status=="REJECTED" %>
             <tr>
               <td><strong>Appllication status:</strong></td>
-              <td><%= @candidate.applicationstatus %></td>
+              <td><%= @candidate.application_status %></td>
             </tr>
             <% if @candidate.reason.present?%>
               <td><strong>Reason :</strong></td>
               <td><%= @candidate.reason %></td>
             <% end %>
-          <% elsif @candidate.applicationstatus=="ACCEPTED"%>
+          <% elsif @candidate.application_status=="ACCEPTED"%>
             <tr>
               <td><strong>Appllication status:</strong></td>
-              <td><%= @candidate.applicationstatus %></td>
+              <td><%= @candidate.application_status %></td>
             </tr>
             <tr>
               <% if @candidate.payment_status== 'COMPLETED' %>
@@ -90,7 +90,7 @@
             </tr>
           <% else %>
             <td><strong>Appllication status:</strong></td>
-            <td><%= @candidate.applicationstatus = 'Under Process'%></td>
+            <td><%= @candidate.application_status = 'Under Process'%></td>
           <% end %>
         </tr>
       </tbody>
@@ -100,18 +100,14 @@
   <% if admin?%>
     <strong><%= link_to 'Edit', edit_grade_candidate_path(@candidate.grade, @candidate) %> |</strong>
   <% else %>
-    <% if @candidate.applicationstatus=="REJECTED" %>
-    <% elsif  @candidate.applicationstatus=="ACCEPTED" %>
+    <% if @candidate.application_status=="REJECTED" %>
+    <% elsif  @candidate.application_status=="ACCEPTED" %>
     <% else %>
       <strong><%= link_to 'Edit', edit_grade_candidate_path(@candidate.grade, @candidate) %> |</strong>
     <% end %>
   <% end %>
 
-  <!-- <% if @candidate.applicationstatus=="REJECTED" %>
-  <% elsif  @candidate.applicationstatus=="ACCEPTED" %>
-  <% else %>
-    <strong><%= link_to 'Edit', edit_grade_candidate_path(@candidate.grade, @candidate) %> |</strong>
-  <% end %> -->
+
 
   <strong><%= link_to 'Back To Candidates List',  [ @grade] %></strong>
 </div>

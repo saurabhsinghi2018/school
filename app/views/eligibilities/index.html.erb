@@ -17,11 +17,11 @@
       <% @eligibilities.each do |eligibility| %>
         <tr>
           <td colspan="3"><%= eligibility.section %></td>
-          <td><%= eligibility.dateofbirthtill %></td>
+          <td><%= eligibility.date_of_birth_till %></td>
           <td><%= eligibility.age %></td>
-          <td><%= eligibility.dateason %></td>
+          <td><%= eligibility.date_as_on %></td>
           <% if admin? %>
-          <td><%= link_to 'Show', eligibility %></td>
+          <!-- <td><%= link_to 'Show', eligibility %></td> -->
           <td><%= link_to 'Edit', edit_eligibility_path(eligibility) %></td>
           <td><%= link_to 'Destroy', eligibility, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>

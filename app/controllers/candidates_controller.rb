@@ -67,6 +67,6 @@ class CandidatesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def candidate_params
-      params.require(:candidate).permit(:candidatename, :education, :passportsizephoto, :fathername, :mothername, :fathercontactnumber, :mothercontactnumber, :contactaddress, :previousgrademarksheet,:applicationstatus,:reason,:payment_status,:appointment_date,:appointment_time,:appointment_place)
+      params.require(:candidate).permit(:candidate_name, :education, :passport_size_photo, :father_name, :mother_name, :contact_father, :contact_mother, :contact_address, :previous_grade_marksheet,:application_status,:reason,:payment_status,:appointment_date,:appointment_time,:appointment_place)
     end
 end

@@ -4,9 +4,9 @@ class Candidate < ApplicationRecord
   belongs_to :user
   belongs_to :grade
 
-  mount_uploader :passportsizephoto, ImageUploader
+  mount_uploader :passport_size_photo, ImageUploader
 
-  mount_uploader :previousgrademarksheet , AttachmentUploader
+  mount_uploader :previous_grade_marksheet , AttachmentUploader
 
   after_create :send_email
 

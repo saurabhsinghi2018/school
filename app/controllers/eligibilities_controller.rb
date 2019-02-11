@@ -34,7 +34,7 @@ class EligibilitiesController < ApplicationController
   def update
     respond_to do |format|
       if @eligibility.update(eligibility_params)
-        format.html { redirect_to @eligibility, primary: 'Eligibility was successfully updated.' }
+        format.html { redirect_to eligibilities_path, primary: 'Eligibility was successfully updated.' }
         format.html { redirect_to @eligibility }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class EligibilitiesController < ApplicationController
     end
 
     def eligibility_params
-      params.require(:eligibility).permit(:section, :dateofbirthtill, :age, :dateason)
+      params.require(:eligibility).permit(:section, :date_of_birth_till, :age, :date_as_on)
     end
 
 end

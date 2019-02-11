@@ -1,12 +1,12 @@
-<div class="container update">
+<div class="container update section">
   <p>
     <strong>Shortlisting:</strong>
-    <%= @notice.shortlisting %>
+    <%= @notice.title %>
   </p>
 
   <p>
     <strong>Interview:</strong>
-    <%= @notice.interview %>
+    <%= @notice.details %>
   </p>
 
   <%= link_to 'Edit', edit_notice_path(@notice) %> |

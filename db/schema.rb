@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190205105808) do
+ActiveRecord::Schema.define(version: 20190211093916) do
 
   create_table "candidates", force: :cascade do |t|
-    t.string   "candidatename"
+    t.string   "candidate_name"
     t.string   "education"
-    t.string   "passportsizephoto"
-    t.string   "fathername"
-    t.string   "mothername"
-    t.string   "contactaddress"
-    t.string   "fathercontactnumber"
-    t.string   "mothercontactnumber"
-    t.string   "previousgrademarksheet"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "passport_size_photo"
+    t.string   "father_name"
+    t.string   "mother_name"
+    t.string   "contact_address"
+    t.string   "contact_father"
+    t.string   "contact_mother"
+    t.string   "previous_grade_marksheet"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "user_id"
-    t.string   "applicationstatus"
+    t.string   "application_status"
     t.string   "reason"
     t.string   "payment_status"
     t.integer  "grade_id"
@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 20190205105808) do
 
   create_table "eligibilities", force: :cascade do |t|
     t.string   "section"
-    t.string   "dateofbirthtill"
+    t.string   "date_of_birth_till"
     t.string   "age"
-    t.string   "dateason"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "date_as_on"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "grades", force: :cascade do |t|
@@ -59,10 +59,10 @@ ActiveRecord::Schema.define(version: 20190205105808) do
   end
 
   create_table "notices", force: :cascade do |t|
-    t.string   "shortlisting"
-    t.string   "interview"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "title"
+    t.string   "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "payments", force: :cascade do |t|

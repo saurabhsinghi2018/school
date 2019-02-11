@@ -18,7 +18,7 @@
           <% @candidates.each do |candidate| %>
           <tr>
             <td>Mt-<%= candidate.id %></td>
-            <td><%= candidate.candidatename %></td>
+            <td><%= candidate.candidate_name %></td>
             <td><%= candidate.education %></td>
             <td><%= link_to("Click Here", grade_candidate_path(@grade.id,candidate))%></td>
             <td><%= link_to("Edit", edit_grade_candidate_path(@grade.id,candidate))%></td>
@@ -49,12 +49,12 @@
           <% @candidates.each do |candidate| %>
           <tr>
             <td>Mt-<%= candidate.id %></td>
-            <td><%= candidate.candidatename %></td>
+            <td><%= candidate.candidate_name %></td>
             <td><%= candidate.education %></td>
             <td><%= link_to("Click Here", grade_candidate_path(@grade.id,candidate))%></td>
-            <% if candidate.applicationstatus =="ACCEPTED" %>
+            <% if candidate.application_status =="ACCEPTED" %>
               <td>N.A</td>
-            <% elsif candidate.applicationstatus =="REJECTED" %>
+            <% elsif candidate.application_status =="REJECTED" %>
               <td>N.A</td>
             <% else %>
               <td><%= link_to("Edit", edit_grade_candidate_path(@grade.id,candidate))%></td>

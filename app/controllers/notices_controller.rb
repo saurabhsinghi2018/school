@@ -34,7 +34,7 @@ class NoticesController < ApplicationController
   def update
     respond_to do |format|
       if @notice.update(notice_params)
-        format.html { redirect_to @notice, primary: 'Notice was successfully updated.' }
+        format.html { redirect_to notices_path, primary: 'Notice was successfully updated.' }
         format.json { render :show, status: :ok, location: @notice }
       else
         format.html { render :edit }
@@ -58,6 +58,6 @@ class NoticesController < ApplicationController
     end
 
     def notice_params
-      params.require(:notice).permit(:shortlisting, :interview)
+      params.require(:notice).permit(:title, :details)
     end
 end
