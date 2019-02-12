@@ -1,6 +1,8 @@
 class PaymentsController < ApplicationController
 
   before_action :logged_in_user
+  before_action :authorize, only: [:all]
+
 
   def new
     @candidate = Candidate.find(params[:format])
@@ -33,6 +35,10 @@ class PaymentsController < ApplicationController
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_payment_path
+  end
+
+  def all
+    @payments = Payment.all
   end
 
 end

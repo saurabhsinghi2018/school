@@ -1,8 +1,10 @@
 class CandidatesController < ApplicationController
-  before_action :set_candidates
+  # before_action :set_candidates
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
   before_action :correct_user
+  before_action :authorize, only: [:appointment]
+
   # GET grades/1/candidates
   def index
     @candidate = current_user.candidate
@@ -55,13 +57,18 @@ class CandidatesController < ApplicationController
       redirect_to [ @grade]
     end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_candidates
-      @grade = Grade.find(params[:grade_id])
+    def appointment
+      @candidates=Candidate.all
     end
 
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    # def set_candidates
+    #   @grade = Grade.find(params[:grade_id])
+    # end
+
     def set_candidate
+      @grade = Grade.find(params[:grade_id])
       @candidate = @grade.candidates.find(params[:id])
     end
 

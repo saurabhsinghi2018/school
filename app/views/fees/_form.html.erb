@@ -1,0 +1,32 @@
+<div class="container">
+  <%= form_for(fee) do |f| %>
+    <% if fee.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(fee.errors.count, "error") %> prohibited this fee from being saved:</h2>
+
+        <ul>
+        <% fee.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :Class %>
+      <!-- <%= f.text_field :klass %> -->
+      <%= f.select(:klass,Fee::FEE) %>
+
+    </div>
+
+    <div class="field">
+      <%= f.label :fee %>
+      <%= f.text_field :fee %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+</div>

@@ -13,10 +13,14 @@ Rails.application.routes.draw do
     resources :candidates
   end
 
+  resources :fees
+
   resource :payment
   resources :notices
   resources :eligibilities
 
+  get 'all',to: "payments#all"
+  get 'appointment',to:"candidates#appointment"
   get 'achievements' , to: "welcome#achievements"
   get 'contact' , to: "welcome#contact"
   get '/information' , to: "welcome#information"

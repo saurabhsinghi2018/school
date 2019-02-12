@@ -1,0 +1,37 @@
+<div class="table-responsive container candidates section">
+    <h1>Listing candidates</h1>
+
+    <table class="table">
+      <tr>
+        <th>Grade Id</th>
+        <th>candidate id</th>
+        <th>Candidatename</th>
+        <th>Appointment date</th>
+        <th>Appointment time</th>
+        <th>Appointment place</th>
+
+      </tr>
+
+    <% @candidates.each do |candidate| %>
+      <tr>
+        <% if (candidate.appointment_date and candidate.appointment_time and candidate.appointment_place).present? %>
+          <td><%= candidate.grade_id %></td>
+          <td>Mt-<%= candidate.id %></td>
+          <td><%= candidate.candidate_name %></td>
+          <td><%= candidate.appointment_date %></td>
+          <td><%= candidate.appointment_time %></td>
+          <td><%= candidate.appointment_place %></td>
+        <% end %>
+        <!-- <td><%= candidate.grade_id %></td>
+        <td>Mt-<%= candidate.id %></td>
+        <td><%= candidate.candidate_name %></td>
+        <td><%= candidate.appointment_date %></td>
+        <td><%= candidate.appointment_time %></td>
+        <td><%= candidate.appointment_place %></td> -->
+      </tr>
+    <% end %>
+    </table>
+
+</div>
+
+<%= render 'welcome/footer' %>

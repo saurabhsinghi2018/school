@@ -1,0 +1,19 @@
+<div class="container update">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Klass:</strong>
+    <%= @fee.klass %>
+  </p>
+
+  <p>
+    <strong>Fee:</strong>
+    <%= @fee.fee %>
+  </p>
+
+  <%= link_to 'Edit', edit_fee_path(@fee) %> |
+  <%= link_to 'Back', fees_path %>
+
+</div>
+
+<%= render 'welcome/footer' %>

@@ -6,35 +6,26 @@
   <h3>Listing grades</h3>
   <table class="table">
     <tr>
+      <% if admin?%>
+        <th>Grade Id:</th>
+      <% end %>
       <th>Grade</th>
       <th></th>
-      <% if admin? %>
-        <!-- <th>Add Grades/Edit</th> -->
-        <!-- <th>Destroy</th> -->
-      <% end %>
     </tr>
 
   <% @grades.each do |grade| %>
     <tr>
+      <% if admin?%>
+        <td><%= grade.id %></td>
+      <% end %>
       <td><%= grade.grade %></td>
       <td><strong><%= link_to 'Check All Candidates', [grade] %></strong></td>
-      <% if admin? %>
-      <!-- <td><%= link_to 'Add Grades/Edit', edit_grade_path(grade) %></td> -->
-      <!-- <td><%= link_to 'Destroy', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-      <% end %>
-
     </tr>
   <% end %>
   </table>
   <% else %>
     <h5>No grades has been added</h5>
   <% end %>
-
-  <br />
-
-  <!-- <% if admin?%>
-    <%= link_to 'New Grade', new_grade_path, class:'btn btn-primary' %>
-  <% end %> -->
 
 </div>
 

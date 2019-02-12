@@ -24,7 +24,7 @@ class NoticesController < ApplicationController
 
     respond_to do |format|
       if @notice.save
-        format.html { redirect_to @notice}
+        format.html { redirect_to notices_path}
       else
         format.html { render :new }
       end

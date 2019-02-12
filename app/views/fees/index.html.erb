@@ -1,0 +1,38 @@
+<div class="container eligibilities section fee">
+  <p id="notice"><%= notice %></p>
+  <h2 class="text-center">FEE STRUCTURE 2019-2020</h2>
+
+
+  <h1>Fees</h1>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Class</th>
+        <th>Fee</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @fees.each do |fee| %>
+        <tr>
+          <td><%= fee.klass %></td>
+          <td><%= fee.fee %></td>
+          <!-- <td><%= link_to 'Show', fee %></td> -->
+          <% if admin? %>
+            <td><%= link_to 'Edit', edit_fee_path(fee) %></td>
+            <td><%= link_to 'Destroy', fee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% if admin?%>
+    <%= link_to 'New Fee', new_fee_path %>
+  <% end %>
+
+</div>
+
+<%= render 'welcome/footer' %>

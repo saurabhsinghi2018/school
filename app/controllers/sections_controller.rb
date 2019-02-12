@@ -12,6 +12,7 @@ class SectionsController < ApplicationController
   # GET /sections/1.json
   def show
     @grades=@section.grades
+    @candidates=Candidate.all
   end
 
   # GET /sections/new
