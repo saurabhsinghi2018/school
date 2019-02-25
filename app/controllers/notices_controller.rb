@@ -22,33 +22,24 @@ class NoticesController < ApplicationController
   def create
     @notice = Notice.new(notice_params)
 
-    respond_to do |format|
-      if @notice.save
-        format.html { redirect_to notices_path}
-      else
-        format.html { render :new }
-      end
+    if @notice.save
+       redirect_to notices_path
+    else
+       render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @notice.update(notice_params)
-        format.html { redirect_to notices_path, primary: 'Notice was successfully updated.' }
-        format.json { render :show, status: :ok, location: @notice }
-      else
-        format.html { render :edit }
-        format.json { render json: @notice.errors, status: :unprocessable_entity }
+    if @notice.update(notice_params)
+      redirect_to notices_path, primary: 'Notice was successfully updated.'
+    else
+      render :edit
       end
-    end
   end
 
   def destroy
     @notice.destroy
-    respond_to do |format|
-      format.html { redirect_to notices_url, primary: 'Notice was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+     redirect_to notices_url, primary: 'Notice was successfully destroyed.'
   end
 
   private

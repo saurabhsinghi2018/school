@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :warning, :danger, :info, :error, :primary
 
   include SessionsHelper
+  include CandidatesHelper
 
   helper_method :admin?
 

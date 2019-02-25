@@ -2,30 +2,22 @@
   <h2><%= @section.section%></h2>
 
   <%= link_to("<< Back to Section List", sections_path, class:'btn btn-primary') %>
-  <% if @grades.present? %>
   <h3>Listing grades</h3>
   <table class="table">
     <tr>
-      <% if admin?%>
-        <th>Grade Id:</th>
-      <% end %>
       <th>Grade</th>
       <th></th>
+      <th>No. of candidates Added</th>
     </tr>
 
-  <% @grades.each do |grade| %>
-    <tr>
-      <% if admin?%>
-        <td><%= grade.id %></td>
-      <% end %>
-      <td><%= grade.grade %></td>
-      <td><strong><%= link_to 'Check All Candidates', [grade] %></strong></td>
-    </tr>
-  <% end %>
+    <% @grades.each do |grade| %>
+      <tr>
+        <td><%= grade.grade %></td>
+        <td><strong><%= link_to 'Apply for Admission', [grade] %></strong></td>
+        <td><%= grade.candidates.count %></td>
+      </tr>
+    <% end %>
   </table>
-  <% else %>
-    <h5>No grades has been added</h5>
-  <% end %>
 
 </div>
 

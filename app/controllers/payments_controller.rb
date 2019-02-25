@@ -37,7 +37,7 @@ class PaymentsController < ApplicationController
     redirect_to new_payment_path
   end
 
-  def all
+  def index
     @payments = Payment.all
   end
 

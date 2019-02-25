@@ -8,6 +8,12 @@ class Candidate < ApplicationRecord
 
   mount_uploader :previous_grade_marksheet , AttachmentUploader
 
+  mount_uploader :receipt , AttachmentUploader
+
+
+  validates :contact_father,:contact_mother, numericality: true, format: { with: /\A[789]\d{9}\z/ }
+
+
   after_create :send_email
 
  def send_email

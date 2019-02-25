@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190212091843) do
+ActiveRecord::Schema.define(version: 20190215070018) do
 
   create_table "candidates", force: :cascade do |t|
     t.string   "candidate_name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20190212091843) do
     t.string   "appointment_date"
     t.string   "appointment_time"
     t.string   "appointment_place"
+    t.string   "receipt"
     t.index ["grade_id"], name: "index_candidates_on_grade_id"
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end

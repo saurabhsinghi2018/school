@@ -1,6 +1,8 @@
 class FeesController < ApplicationController
   before_action :set_fee, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
+  before_action :authorize,except:[:index]
+
 
   # GET /fees
   # GET /fees.json
@@ -27,28 +29,20 @@ class FeesController < ApplicationController
   def create
     @fee = Fee.new(fee_params)
 
-    respond_to do |format|
-      if @fee.save
-        format.html { redirect_to fees_path, primary: 'Fee was successfully created.' }
-        format.json { render :show, status: :created, location: @fee }
-      else
-        format.html { render :new }
-        format.json { render json: @fee.errors, status: :unprocessable_entity }
-      end
+    if @fee.save
+     redirect_to fees_path, primary: 'Fee was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /fees/1
   # PATCH/PUT /fees/1.json
   def update
-    respond_to do |format|
-      if @fee.update(fee_params)
-        format.html { redirect_to fees_path, primary: 'Fee was successfully updated.' }
-        format.json { render :show, status: :ok, location: @fee }
-      else
-        format.html { render :edit }
-        format.json { render json: @fee.errors, status: :unprocessable_entity }
-      end
+    if @fee.update(fee_params)
+       redirect_to fees_path, primary: 'Fee was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -56,10 +50,7 @@ class FeesController < ApplicationController
   # DELETE /fees/1.json
   def destroy
     @fee.destroy
-    respond_to do |format|
-      format.html { redirect_to fees_path, primary: 'Fee was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to fees_path, primary: 'Fee was successfully destroyed.' 
   end
 
   private

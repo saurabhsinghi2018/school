@@ -22,33 +22,24 @@ class EligibilitiesController < ApplicationController
   def create
     @eligibility = Eligibility.new(eligibility_params)
 
-    respond_to do |format|
-      if @eligibility.save
-        format.html { redirect_to eligibilities_url }
-      else
-        format.html { render :new }
-      end
+    if @eligibility.save
+      redirect_to eligibilities_url
+    else
+      render :new 
     end
   end
 
   def update
-    respond_to do |format|
-      if @eligibility.update(eligibility_params)
-        format.html { redirect_to eligibilities_path, primary: 'Eligibility was successfully updated.' }
-        format.html { redirect_to @eligibility }
-      else
-        format.html { render :edit }
-      end
+    if @eligibility.update(eligibility_params)
+     redirect_to eligibilities_path, primary: 'Eligibility was successfully updated.'
+    else
+      format.html { render :edit }
     end
   end
 
   def destroy
     @eligibility.destroy
-    respond_to do |format|
-      format.html { redirect_to eligibilities_path, primary: 'Eligibility was successfully destroyed.' }
-      format.html { redirect_to eligibilities_url }
-      format.json { head :no_content }
-    end
+      redirect_to eligibilities_path, primary: 'Eligibility was successfully destroyed.'
   end
 
   private

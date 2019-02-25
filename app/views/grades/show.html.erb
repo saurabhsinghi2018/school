@@ -1,5 +1,5 @@
 <div class="container section">
-  <%= link_to("<< Back to Sections List", sections_path, class:'btn btn-primary') %>
+  <%= link_to("<< Back to Sections List", sections_path) %>
   <h2>GRADE :<%= @grade.grade %></h2>
   <br>
   <% if current_user.admin? %>

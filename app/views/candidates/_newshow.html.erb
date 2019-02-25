@@ -17,24 +17,8 @@
             <td><%= @candidate.candidate_name %></td>
           </tr>
           <tr>
-            <td><strong>Education:</strong></td>
-            <td><%= @candidate.education %></td>
-          </tr>
-          <tr>
             <td><strong>Passportsizephoto:</strong></td>
             <td><%= image_tag @candidate.passport_size_photo.thumb.url %></td>
-          </tr>
-          <tr>
-            <td><strong>Fathername:</strong></td>
-            <td><%= @candidate.father_name %></td>
-          </tr>
-          <tr>
-            <td><strong>Mothername:</strong></td>
-            <td><%= @candidate.mother_name %></td>
-          </tr>
-          <tr>
-            <td><strong>Contactaddress:</strong></td>
-            <td><%= @candidate.contact_address %></td>
           </tr>
           <tr>
             <td><strong>Fathercontactnumber:</strong></td>
@@ -43,10 +27,6 @@
           <tr>
             <td><strong>Mothercontactnumber:</strong></td>
             <td><%= @candidate.contact_mother %></td>
-          </tr>
-          <tr>
-            <td><strong>Previousgrademarksheet:</strong></td>
-            <td><%= @candidate.previous_grade_marksheet %></td>
           </tr>
           <tr>
             <% if @candidate.application_status=="REJECTED" %>

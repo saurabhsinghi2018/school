@@ -43,14 +43,19 @@
           <td><%= @candidate.contact_mother %></td>
         </tr>
         <tr>
-          <td><strong>Previousgrademarksheet:</strong></td>
-          <td><%= @candidate.previous_grade_marksheet %></td>
+          <td><strong>Previous grade marksheet:</strong></td>
+          <!-- <td><%= @candidate.previous_grade_marksheet.url %></td> -->
+          <% if @candidate.previous_grade_marksheet.present? %>
+            <td><iframe src=<%= @candidate.previous_grade_marksheet.url %> width="400" height="400" style="border: none;"></iframe></td>
+          <% else %>
+            <td><%= @candidate.previous_grade_marksheet.url %></td>
+          <% end %>
         </tr>
         <tr>
           <% if @candidate.application_status=="REJECTED" %>
             <tr>
               <td><strong>Appllication status:</strong></td>
-              <td><%= @candidate.application_status %></td>
+              <td><%= @candidate.application_status.url %></td>
             </tr>
             <% if @candidate.reason.present?%>
               <td><strong>Reason :</strong></td>
@@ -65,6 +70,14 @@
               <% if @candidate.payment_status== 'COMPLETED' %>
                 <td><strong>Payment Status : </strong></td>
                 <td>Payment has been done for the candidate</td>
+                <% if @candidate.receipt.present? %>
+                  <tr>
+                    <td><strong>Payment Recipt :</strong></td>
+                    <!-- <td><%= @candidate.receipt.url %></td> -->
+                    <td><iframe src=<%=  @candidate.receipt.url %> width="400" height="400" style="border: none;"></iframe></td>
+
+                  </tr>
+                <% end %>
                 <% if @candidate.appointment_date.present? %>
                   <tr>
                     <td><strong>Appointment Date</strong></td>

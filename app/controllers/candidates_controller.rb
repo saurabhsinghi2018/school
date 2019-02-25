@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-  # before_action :set_candidates
+  before_action :set_candidates,except:[:appointment]
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
   before_action :correct_user
@@ -63,17 +63,17 @@ class CandidatesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_candidates
-    #   @grade = Grade.find(params[:grade_id])
-    # end
+    def set_candidates
+      @grade = Grade.find(params[:grade_id])
+    end
 
     def set_candidate
-      @grade = Grade.find(params[:grade_id])
+      # @grade = Grade.find(params[:grade_id])
       @candidate = @grade.candidates.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def candidate_params
-      params.require(:candidate).permit(:candidate_name, :education, :passport_size_photo, :father_name, :mother_name, :contact_father, :contact_mother, :contact_address, :previous_grade_marksheet,:application_status,:reason,:payment_status,:appointment_date,:appointment_time,:appointment_place)
+      params.require(:candidate).permit(:candidate_name, :education, :passport_size_photo, :father_name, :mother_name, :contact_father, :contact_mother, :contact_address, :previous_grade_marksheet,:application_status,:reason,:payment_status,:receipt,:appointment_date,:appointment_time,:appointment_place)
     end
 end

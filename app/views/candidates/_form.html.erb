@@ -49,16 +49,16 @@
   </div>
 
   <div class="field">
-    <% if @candidate.passport_size_photo? %>
-      <%= f.label :passport_size_photo  %>
-      <span><strong> : <%= image_tag @candidate.passport_size_photo.thumb.url %></strong></span>
-      <h6><strong>Or Update photo</strong></h6>
-      <%= f.file_field :photo , class: 'form-control' %>
-    <% else %>
-      <%= f.label :passport_size_photo %>
-      <%= f.file_field :passport_size_photo , class: 'form-control' , required: 'required' %>
-    <% end %>
-  </div>
+      <% if @candidate.passport_size_photo? %>
+        <%= f.label :passport_size_photo  %>
+        <span><strong> : <%= image_tag @candidate.passport_size_photo.thumb.url %></strong></span>
+        <h6><strong>Or Update photo</strong></h6>
+        <%= f.file_field :photo , class: 'form-control' %>
+      <% else %>
+        <%= f.label :passport_size_photo %>
+        <%= f.file_field :passport_size_photo , class: 'form-control' , required: 'required' %>
+      <% end %>
+    </div>
 
   <div class="field">
     <%= f.label :father_name %>
@@ -77,19 +77,20 @@
 
   <div class="field">
     <%= f.label :father_contact_number %>
-    <%= f.text_field :contact_father , class: 'form-control' , required: 'required',type: 'number' %>
+    <%= f.text_field :contact_father , class: 'form-control' , required: 'required',type: 'number',min:'0' %>
   </div>
 
   <div class="field">
     <%= f.label :mother_contact_number %>
-    <%= f.text_field :contact_mother , class: 'form-control' , required: 'required' ,type: 'number' %>
+    <%= f.text_field :contact_mother , class: 'form-control' , required: 'required' ,type: 'number',min:'0'%>
   </div>
 
   <div class="field">
       <% unless @grade.grade == "Kindergarten Section" || @grade.grade=='1' %>
       <% if @candidate.previous_grade_marksheet? %>
-        <%= f.label :previousgrademarksheet %>
-        <span>=><strong><%=  @candidate.previous_grade_marksheet.url %></strong></span>
+        <%= f.label :previous_grade_marksheet %>
+        <!-- <span>=><strong><%=  @candidate.previous_grade_marksheet.url %></strong></span> -->
+        <span>=> <iframe src=<%=  @candidate.previous_grade_marksheet.url %> width="400" height="400" style="border: none;"></iframe></span>
         <h6><strong>Or Update marksheet</strong></h6>
         <%= f.file_field :previous_grade_marksheet , class: 'form-control' %>
       <% else %>
@@ -111,6 +112,23 @@
     <% if @candidate.application_status== 'ACCEPTED'%>
 
         <% if @candidate.payment_status.present? and @candidate.payment_status=='COMPLETED'%>
+
+
+          <div class="field">
+            <h2>Payment receipt :</h2>
+            <% if @candidate.receipt? %>
+              <!-- <%= f.label :Payment_Receipt %> -->
+              <span><iframe src=<%=  @candidate.receipt.url %> width="400" height="400" style="border: none;"></iframe></span>
+              <!-- <h6><strong>Or Update Payment_Receipt</strong></h6>
+              <%= f.file_field :receipt, class: 'form-control' %> -->
+            <% else %>
+              <%= f.label :Payment_Receipt %>
+              <%= f.file_field :receipt , class: 'form-control' %>
+            <% end %>
+          </div>
+
+
+
           <div class="field">
             <%= f.label :appointment_date %>
             <%= f.date_field :appointment_date ,value: @candidate.appointment_date, class: 'form-control'  %>
@@ -125,6 +143,7 @@
             <%= f.label :appointment_place %>
             <%= f.text_field :appointment_place, class: 'form-control'  %>
           </div>
+
         <% else %>
           <div class="field">
             <%= f.label :payment_status %>

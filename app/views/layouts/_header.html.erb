@@ -27,8 +27,8 @@
               <div class="dropdown-menu drop" aria-labelledby="navbarDropdown">
                 <% if admin?%>
                   <%= link_to 'All Sections', sections_path %>
-                  <%= link_to 'All Payments List', all_path%>
-                  <%= link_to 'All Appointments List',appointment_path %>
+                  <%= link_to 'All Payments List', index_path%>
+                  <%= link_to 'Accepted Candidates',appointment_path %>
                   <!-- <%= link_to 'All Grades',grades_path%> -->
                 <% else %>
                   <%= link_to 'Check Sections', sections_path %>

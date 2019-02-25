@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :notices
   resources :eligibilities
 
-  get 'all',to: "payments#all"
+  get 'index',to: "payments#index"
   get 'appointment',to:"candidates#appointment"
   get 'achievements' , to: "welcome#achievements"
   get 'contact' , to: "welcome#contact"

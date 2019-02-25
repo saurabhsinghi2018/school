@@ -2,15 +2,16 @@
   <p id="notice"><%= notice %></p>
   <h2 class="text-center">FEE STRUCTURE 2019-2020</h2>
 
-
-  <h1>Fees</h1>
+  <h1>Per Month</h1>
 
   <table class="table">
     <thead class="thead-dark">
       <tr>
         <th>Class</th>
-        <th>Fee</th>
-        <th colspan="3"></th>
+        <th>Fee (Rs)</th>
+        <% if admin? %>
+          <th colspan="3"></th>
+        <% end %>
       </tr>
     </thead>
 
@@ -21,8 +22,8 @@
           <td><%= fee.fee %></td>
           <!-- <td><%= link_to 'Show', fee %></td> -->
           <% if admin? %>
-            <td><%= link_to 'Edit', edit_fee_path(fee) %></td>
-            <td><%= link_to 'Destroy', fee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><strong><%= link_to 'Edit', edit_fee_path(fee) %></strong></td>
+            <td><strong><%= link_to 'Destroy', fee, method: :delete, data: { confirm: 'Are you sure?' } %></strong></td>
           <% end %>
         </tr>
       <% end %>
