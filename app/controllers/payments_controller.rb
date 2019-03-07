@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
 
   before_action :logged_in_user
-  before_action :authorize, only: [:all]
+  before_action :authorize, only: [:index]
 
 
   def new

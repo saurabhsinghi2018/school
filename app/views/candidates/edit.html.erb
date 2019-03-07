@@ -4,8 +4,8 @@
 
   <%= render 'form', candidate: [@candidate] %>
 
-  <%= link_to 'Show', [@candidate.grade, @candidate] %> |
-  <%= link_to 'Back To Candidates List',  [@grade] %> |
+  <%= link_to 'Show', [@candidate.section, @candidate] %> |
+  <%= link_to 'Back To Candidates List',  [@section] %> |
   <% if admin?%>
     <%= link_to 'Accepted Candidates List',appointment_path%>
   <% end %>

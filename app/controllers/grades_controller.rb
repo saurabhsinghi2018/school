@@ -14,13 +14,6 @@ class GradesController < ApplicationController
   # GET /grades/1
   # GET /grades/1.json
   def show
-    @user = User.find(current_user.id)
-
-    if current_user.admin?
-      @candidates = @grade.candidates
-    else
-      @candidates = @grade.candidates.where(user_id: current_user.id)
-    end
   end
 
   # GET /grades/new
@@ -58,7 +51,7 @@ class GradesController < ApplicationController
   # DELETE /grades/1.json
   def destroy
     @grade.destroy
-      redirect_to grades_url, primary: 'Grade was successfully destroyed.' 
+      redirect_to grades_url, primary: 'Grade was successfully destroyed.'
   end
 
 

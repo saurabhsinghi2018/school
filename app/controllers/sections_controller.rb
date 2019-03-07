@@ -13,6 +13,13 @@ class SectionsController < ApplicationController
   def show
     @grades=@section.grades
     @candidates=Candidate.all
+    @user = User.find(current_user.id)
+
+    if current_user.admin?
+      @candidates = @section.candidates
+    else
+      @candidates = @section.candidates.where(user_id: current_user.id)
+    end
   end
 
   # GET /sections/new

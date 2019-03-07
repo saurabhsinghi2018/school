@@ -6,26 +6,26 @@
   <table class="table">
     <thead>
       <tr>
+        <th class="text-primary">Section id</th>
         <th class="text-danger">Grade</th>
         <th>Candidate_id:</th>
         <th>Candidate name:</th>
         <th>Payment</th>
         <th>Payment Receipt</th>
-        <th>Edit</th>
       </tr>
     </thead>
 
     <tbody>
       <% @payments.each do |payment| %>
         <tr>
-          <td><%= payment.candidate.grade.grade %></td>
+          <td><%= payment.candidate.section_id %></td>
+          <td><%= payment.candidate.education %></td>
           <td><%= payment.candidate_id %></td>
           <td><%= payment.candidate.candidate_name %></td>
           <td>Done</td>
           <% if payment.candidate.receipt.present? %>
             <td>Received By User</td>
           <% end %>
-          <td><%= link_to("Edit", edit_grade_candidate_path(@grade.id,candidate))%></td>
         </tr>
       <% end %>
     </tbody>

@@ -8,7 +8,7 @@
       <tbody>
         <tr>
           <td><strong>Class Applied For:</strong></td>
-          <td><%= @candidate.grade.grade %></td>
+          <td><%= @candidate.education %></td>
         </tr>
         <tr>
           <td><strong>Candidatename:</strong></td>
@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <td><strong>Passportsizephoto:</strong></td>
-          <td><%= image_tag @candidate.passport_size_photo.thumb.url %></td>
+          <td><%= image_tag @candidate.passport_size_photo.thumb.url  %></td>
         </tr>
         <tr>
           <td><strong>Fathername:</strong></td>
@@ -116,13 +116,13 @@
     <% if @candidate.application_status=="REJECTED" %>
     <% elsif  @candidate.application_status=="ACCEPTED" %>
     <% else %>
-      <strong><%= link_to 'Edit', edit_grade_candidate_path(@candidate.grade, @candidate) %> |</strong>
+      <strong><%= link_to 'Edit', edit_section_candidate_path(@candidate.section, @candidate) %> |</strong>
     <% end %>
   <% end %>
 
 
 
-  <strong><%= link_to 'Back To Candidates List',  [ @grade] %></strong>
+  <strong><%= link_to 'Back To Candidates List',  [ @section] %></strong>
 </div>
 
 <%= render 'welcome/footer' %>

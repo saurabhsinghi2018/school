@@ -39,9 +39,9 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   #   %w(jpg jpeg gif png)
   # end
 
-  version :altfile do
-    process resize_to_fit: [150,150]
-  end
+  # version :pgm do
+  #   process resize_to_fit: [150,150]
+  # end
 
   def extension_white_list
     %w(pdf doc htm html docx)

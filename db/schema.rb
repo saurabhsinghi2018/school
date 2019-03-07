@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190215070018) do
+ActiveRecord::Schema.define(version: 20190307121350) do
 
   create_table "candidates", force: :cascade do |t|
     t.string   "candidate_name"
@@ -28,12 +28,12 @@ ActiveRecord::Schema.define(version: 20190215070018) do
     t.string   "application_status"
     t.string   "reason"
     t.string   "payment_status"
-    t.integer  "grade_id"
     t.string   "appointment_date"
     t.string   "appointment_time"
     t.string   "appointment_place"
     t.string   "receipt"
-    t.index ["grade_id"], name: "index_candidates_on_grade_id"
+    t.integer  "section_id"
+    t.index ["section_id"], name: "index_candidates_on_section_id"
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 

@@ -2,7 +2,7 @@ class Candidate < ApplicationRecord
 
   has_one :payment
   belongs_to :user
-  belongs_to :grade
+  belongs_to :section
 
   mount_uploader :passport_size_photo, ImageUploader
 
@@ -10,9 +10,7 @@ class Candidate < ApplicationRecord
 
   mount_uploader :receipt , AttachmentUploader
 
-
   validates :contact_father,:contact_mother, numericality: true, format: { with: /\A[789]\d{9}\z/ }
-
 
   after_create :send_email
 

@@ -1,24 +1,83 @@
 <div class="container section">
-  <h2><%= @section.section%></h2>
+  <%= link_to("<< Back to Section List", sections_path) %>
 
-  <%= link_to("<< Back to Section List", sections_path, class:'btn btn-primary') %>
-  <h3>Listing grades</h3>
-  <table class="table">
-    <tr>
-      <th>Grade</th>
-      <th></th>
-      <th>No. of candidates Added</th>
-    </tr>
+  <h3>Grades Available:</h3>
+  <% @grades.each do |grade| %>
+    <span>[<strong class="text-danger"><%= grade.grade %></strong>]</span>
+  <% end %>
+  <br>
 
-    <% @grades.each do |grade| %>
-      <tr>
-        <td><%= grade.grade %></td>
-        <td><strong><%= link_to 'Apply for Admission', [grade] %></strong></td>
-        <td><%= grade.candidates.count %></td>
-      </tr>
+  <% if current_user.admin? %>
+    <% if @candidates.present? %>
+      <!-- <h3>Candidates List : </h3> -->
+      <h3 class="text-success">Candidates List : </h3>
+
+      <div class="table-responsive container candidates">
+        <table class="table">
+          <tr>
+            <th>candidate id</th>
+            <th>Candidatename</th>
+            <th>Education</th>
+            <th>Full Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <% @candidates.each do |candidate| %>
+          <tr>
+            <td>Mt-<%= candidate.id %></td>
+            <td><%= candidate.candidate_name %></td>
+            <td><%= candidate.education %></td>
+            <td><%= link_to("Click Here", section_candidate_path(@section.id,candidate))%></td>
+            <td><%= link_to("Edit", edit_section_candidate_path(@section.id,candidate))%></td>
+            <td><%= link_to 'Delete', [candidate.section, candidate], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <% else %>
+        <div class="section">
+          <h4><strong>No Candidates to Show</strong></h4>
+        </div>
     <% end %>
-  </table>
+
+  <% else %>
+    <% if @candidates.present? %>
+      <!-- <h3>Candidates List : </h3> -->
+      <div class="table-responsive container candidates">
+        <table class="table">
+          <tr>
+            <th>candidate id</th>
+            <th>Candidatename</th>
+            <th>Education</th>
+            <th>Full Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <% @candidates.each do |candidate| %>
+          <tr>
+            <td>Mt-<%= candidate.id %></td>
+            <td><%= candidate.candidate_name %></td>
+            <td><%= candidate.education %></td>
+            <td><%= link_to("Click Here", section_candidate_path(@section.id,candidate))%></td>
+            <% if candidate.application_status =="ACCEPTED" %>
+              <td>N.A</td>
+            <% elsif candidate.application_status =="REJECTED" %>
+              <td>N.A</td>
+            <% else %>
+              <td><%= link_to("Edit", edit_section_candidate_path(@section.id,candidate))%></td>
+            <% end %>
+            <td><%= link_to 'Delete', [candidate.section, candidate], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <% end %>
+      <%= link_to 'Apply For Admission', new_section_candidate_path(@section), class:'btn btn-primary' %>
+  <% end %>
 
 </div>
+
+
+
 
 <%= render 'welcome/footer' %>

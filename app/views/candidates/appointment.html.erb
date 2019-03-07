@@ -3,7 +3,8 @@
 
     <table class="table">
       <tr>
-        <th class="text-danger">Grade</th>
+        <th class="text-primary">Section id</th>
+        <th class="text-danger">Grade Applied For:</th>
         <th>candidate id</th>
         <th>Candidatename</th>
         <th>Appointment date</th>
@@ -11,17 +12,18 @@
         <th>Appointment place</th>
         <th>Action</th>
       </tr>
-    
+
     <% @candidates.each do |candidate| %>
       <tr>
         <!-- <% if candidate.application_status=="ACCEPTED" %> -->
-          <td><%= candidate.grade.grade %></td>
-          <td>Mt-<%= candidate.id %></td>
+          <td><%= candidate.section_id %></td>
+          <td><%= candidate.education %></td>
+          <td><%= candidate.id %></td>
           <td><%= candidate.candidate_name %></td>
           <td><%= candidate.appointment_date %></td>
           <td><%= candidate.appointment_time %></td>
           <td><%= candidate.appointment_place %></td>
-          <td><strong><%= link_to 'Edit', edit_grade_candidate_path(candidate.grade, candidate) %></strong></td>
+          <td><strong><%= link_to 'Edit', edit_section_candidate_path(candidate.section, candidate) %></strong></td>
         <!-- <% end %> -->
       </tr>
     <% end %>

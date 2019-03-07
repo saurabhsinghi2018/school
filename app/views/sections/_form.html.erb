@@ -13,43 +13,20 @@
   </div>
   <% end %>
 
-
   <div class="field">
     <%= form.label :section %>
     <%= form.text_field :section, class: 'form-control' , required: 'required' %>
   </div>
 
-  <% if @section.section.present? %>
-    <% if @section.section=="KINDERGARDEN" || @section.section=="KINDERGARDEN SECTION"%>
-      <div class="field">
-        <%= form.select(:grades,['KINDERGARDEN'])%>
-      </div>
-    <% else %>
-      <h3 class="mt-10">ADD GRADES FROM BELOW:</h3>
-        <div class="field">
-          <%= hidden_field_tag "section[grade_ids][]",nil%>
-          <% Grade.all.each do |grade| %>
-            <%= check_box_tag "section[grade_ids][]" , grade.id,@section.grade_ids.include?(grade.id),id:dom_id(grade)%>
-            <%= label_tag dom_id(grade) , grade.grade%><br>
-          <% end %>
-        </div>
-    <% end %>
-  <% end %>
-  <!-- <% if @section.section=="KINDERGARDEN" || @section.section=="KINDERGARDEN SECTION"%>
-    <div class="field">
-      <%= form.select(:grades,['KINDERGARDEN'])%>
-    </div>
-  <% else %>
+
+
     <h3 class="mt-10">ADD GRADES FROM BELOW:</h3>
       <div class="field">
         <%= hidden_field_tag "section[grade_ids][]",nil%>
         <% Grade.all.each do |grade| %>
-          <%= check_box_tag "section[grade_ids][]" , grade.id,@section.grade_ids.include?(grade.id),id:dom_id(grade)%>
-          <%= label_tag dom_id(grade) , grade.grade%><br>
+          <%= check_box_tag "section[grade_ids][]" , grade.id,@section.grade_ids.include?(grade.id),id:dom_id(grade)%>            <%= label_tag dom_id(grade) , grade.grade%><br>
         <% end %>
       </div>
-  <% end %> -->
-
 
   <div class="actions mt-4 text-center">
     <%= form.submit %>

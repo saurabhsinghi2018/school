@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_for ([@candidate.grade, @candidate]) do |f| %>
+  <%= form_for ([@candidate.section, @candidate]) do |f| %>
 
   <% if @candidate.errors.any? %>
   <div id="error_explanation">
@@ -21,31 +21,8 @@
   <div class="field">
     <%= f.label :last_education %>
     <!-- <%= f.text_field :education , class: 'form-control' %> -->
-    <% if @grade.grade == "Kindergarten Section" || @grade.grade=="1"%>
-      <%= f.select(:education, ['Not Applicable']) %>
-    <% elsif @grade.grade == "2" %>
-      <%= f.select(:education, ['1']) %>
-    <% elsif @grade.grade == "3" %>
-      <%= f.select(:education, ['1','2']) %>
-    <% elsif @grade.grade == "4" %>
-        <%= f.select(:education, ['2','3']) %>
-    <% elsif @grade.grade == "5" %>
-      <%= f.select(:education, ['3','4']) %>
-    <% elsif @grade.grade == "6" %>
-      <%= f.select(:education, ['4','5']) %>
-    <% elsif @grade.grade == "7" %>
-      <%= f.select(:education, ['5','6']) %>
-    <% elsif @grade.grade == "8" %>
-      <%= f.select(:education, ['6','7']) %>
-    <% elsif @grade.grade == "9" %>
-      <%= f.select(:education, ['7','8']) %>
-    <% elsif @grade.grade == "10" %>
-      <%= f.select(:education, ['8','9']) %>
-    <% elsif @grade.grade == "11" %>
-      <%= f.select(:education, ['10']) %>
-    <% elsif @grade.grade == "12" %>
-      <%= f.select(:education, ['11']) %>
-    <% end %>
+     <%= f.collection_select :education, @grades, :id, :grade %>
+
   </div>
 
   <div class="field">
@@ -86,18 +63,16 @@
   </div>
 
   <div class="field">
-      <% unless @grade.grade == "Kindergarten Section" || @grade.grade=='1' %>
       <% if @candidate.previous_grade_marksheet? %>
         <%= f.label :previous_grade_marksheet %>
-        <!-- <span>=><strong><%=  @candidate.previous_grade_marksheet.url %></strong></span> -->
-        <span>=> <iframe src=<%=  @candidate.previous_grade_marksheet.url %> width="400" height="400" style="border: none;"></iframe></span>
+        <span>=><strong><%=  @candidate.previous_grade_marksheet.url %></strong></span>
+        <!-- <span>=> <iframe src=<%=  @candidate.previous_grade_marksheet.url %> width="400" height="400" style="border: none;"></iframe></span> -->
         <h6><strong>Or Update marksheet</strong></h6>
         <%= f.file_field :previous_grade_marksheet , class: 'form-control' %>
       <% else %>
         <%= f.label :previous_grade_marksheet %>
         <%= f.file_field :previous_grade_marksheet , class: 'form-control' %>
       <% end %>
-    <% end %>
   </div>
 
   <% if admin? %>
@@ -117,10 +92,8 @@
           <div class="field">
             <h2>Payment receipt :</h2>
             <% if @candidate.receipt? %>
-              <!-- <%= f.label :Payment_Receipt %> -->
               <span><iframe src=<%=  @candidate.receipt.url %> width="400" height="400" style="border: none;"></iframe></span>
-              <!-- <h6><strong>Or Update Payment_Receipt</strong></h6>
-              <%= f.file_field :receipt, class: 'form-control' %> -->
+
             <% else %>
               <%= f.label :Payment_Receipt %>
               <%= f.file_field :receipt , class: 'form-control' %>
@@ -159,8 +132,6 @@
     <% end %>
 
   <% end %>
-
-  <!-- <%= render 'candidates/newshow' %> -->
 
   <div class="actions section text-center">
     <%= f.submit %>
