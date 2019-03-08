@@ -1,23 +1,23 @@
 <div class="container section">
   <%= link_to("<< Back to Section List", sections_path) %>
 
-  <h3>Grades Available:</h3>
+  <h2><strong>Grades Available:</strong></h2>
   <% @grades.each do |grade| %>
-    <span>[<strong class="text-danger"><%= grade.grade %></strong>]</span>
+    <span class="display-4">[<strong class="text-danger"><%= grade.grade %></strong>]</span>
   <% end %>
   <br>
+  <hr>
 
   <% if current_user.admin? %>
     <% if @candidates.present? %>
-      <!-- <h3>Candidates List : </h3> -->
-      <h3 class="text-success">Candidates List : </h3>
+      <h2 class="text-info"><strong>Candidates List : </strong></h2>
 
       <div class="table-responsive container candidates">
         <table class="table">
           <tr>
             <th>candidate id</th>
             <th>Candidatename</th>
-            <th>Education</th>
+            <th>Applied For Class:</th>
             <th>Full Details</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -42,13 +42,13 @@
 
   <% else %>
     <% if @candidates.present? %>
-      <!-- <h3>Candidates List : </h3> -->
+     <h2 class="text-info"><strong>Candidates List : </strong></h2>
       <div class="table-responsive container candidates">
         <table class="table">
           <tr>
             <th>candidate id</th>
             <th>Candidatename</th>
-            <th>Education</th>
+            <th>Applied For Class:</th>
             <th>Full Details</th>
             <th>Edit</th>
             <th>Delete</th>
