@@ -111,7 +111,7 @@
   </div>
 
   <% if admin?%>
-    <strong><%= link_to 'Edit', edit_grade_candidate_path(@candidate.grade, @candidate) %> |</strong>
+    <strong><%= link_to 'Edit', edit_section_candidate_path(@candidate.section, @candidate) %> |</strong>
   <% else %>
     <% if @candidate.application_status=="REJECTED" %>
     <% elsif  @candidate.application_status=="ACCEPTED" %>
